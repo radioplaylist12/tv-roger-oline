@@ -202,9 +202,9 @@ body {
 
 /* CÍRCULO TRANSPARENTE COM BORDA PISCANDO (VERDE E AMARELO) */
 .circulo-animado {
-  width: 32px;      /* ← ALTERE AQUI O TAMANHO DO CÍRCULO (e da imagem dentro) */
-  height: 32px;
-  border-radius: 50%;
+  width: 64px;      /* ← ALTERE AQUI O TAMANHO DO CÍRCULO (e da imagem dentro) */
+  height: 364px;
+  border-radius: 100%;
   background: transparent;  /* fundo transparente */
   border: 2px solid;
   /* CORES DA BORDA (verde e amarelo) – ALTERE AQUI AS CORES DO PISCA-PISCA */
@@ -218,8 +218,8 @@ body {
 
 /* Ajuste do tamanho da imagem dentro do círculo (acompanha o tamanho do círculo) */
 .circulo-animado img {
-  width: calc(100% - 6px);
-  height: calc(100% - 6px);
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   object-fit: contain;
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
 }
