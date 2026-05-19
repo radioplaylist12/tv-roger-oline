@@ -3,8 +3,8 @@
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
-<title>TV Online HD - Assista TV Ao Vivo Grátis</title>
-<meta content='Assista aos seus canais favoritos com a TV Online HD. Acesse o melhor da programação de TV ao vivo grátis em alta definição e sem travamentos. Comece a assistir agora!' name='description'/>
+<title>ROGER12 TV - Assista TV Ao Vivo Grátis</title>
+<meta content='Assista aos seus canais favoritos com a ROGER12 TV. Acesse o melhor da programação de TV ao vivo grátis em alta definição e sem travamentos. Comece a assistir agora!' name='description'/>
 <link href='https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap' rel='stylesheet'/>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'/>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/clappr/0.3.13/clappr.min.js'></script>
@@ -18,7 +18,7 @@
 --azul-hover: #0369a1;
 --verde-limpar: #10b981;
 --texto: #ffffff;
---btn-fundo: rgba(10, 15, 29, 0.85);
+--btn-fundo: rgba(10, 15, 29, 0.7);
 }
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
 body {
@@ -67,6 +67,7 @@ border: 1px solid var(--borda); background: var(--btn-fundo);
 color: #fff; font-size: 1.2rem; cursor: pointer;
 display: flex; align-items: center; justify-content: center;
 transition: opacity 0.3s, transform 0.2s;
+backdrop-filter: blur(8px);
 }
 .menu-lateral {
 position: absolute; top: 0; left: -100%; width: 100%; max-width: 280px; height: 100%;
@@ -93,36 +94,42 @@ display: flex; align-items: center; justify-content: center; overflow: hidden; f
 }
 .capa-canal img { width: 100%; height: 100%; object-fit: contain; }
 .meta-canal h3 { font-size: 0.85rem; font-weight: 600; color: var(--texto); }
-/* PAINEL DE CONTROLES GRANDES NA DIREITA */
+
+/* PAINEL DE CONTROLES - TOPO CENTRAL, FIXO, EFEITO VIDRO */
 .controles-Zapping {
 position: absolute;
-right: 20px;
-top: 50%;
-transform: translateY(-50%);
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
 display: flex;
-flex-direction: column;
+flex-direction: row;
 gap: 12px;
 z-index: 9999;
-background: rgba(10, 15, 29, 0.8);
-padding: 10px;
-border-radius: 35px;
-border: 1px solid rgba(255, 255, 255, 0.12);
+background: rgba(10, 15, 29, 0.5);
+backdrop-filter: blur(12px);
+padding: 8px 16px;
+border-radius: 50px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 transition: opacity 0.3s, visibility 0.3s;
 }
 .btn-zap {
-width: 50px;
-height: 50px;
+width: 42px;
+height: 42px;
 border-radius: 50%;
-border: 1px solid rgba(255, 255, 255, 0.15);
-background: var(--btn-fundo);
+border: 1px solid rgba(255, 255, 255, 0.2);
+background: rgba(0, 0, 0, 0.5);
 color: #fff;
-font-size: 1.4rem;
+font-size: 1.2rem;
 cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
 will-change: transform;
 transition: background 0.2s, transform 0.1s;
+}
+.btn-zap:hover {
+background: rgba(2, 132, 199, 0.6);
 }
 .btn-zap:active {
 transform: scale(0.95);
@@ -131,7 +138,8 @@ transform: scale(0.95);
 background: var(--verde-limpar) !important;
 border-color: var(--verde-limpar);
 }
-/* MARCA ROGER12 TV - INFERIOR DIREITO - TOTALMENTE TRANSPARENTE */
+
+/* MARCA ROGER12 TV - INFERIOR DIREITO - SEM ÍCONE */
 .brand-bottom-right {
 position: absolute;
 bottom: 16px;
@@ -142,33 +150,23 @@ color: rgba(255, 255, 255, 0.75);
 font-size: 0.85rem;
 font-weight: 500;
 letter-spacing: 0.5px;
-display: flex;
-align-items: center;
-gap: 6px;
-backdrop-filter: none;
 text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 pointer-events: none;
 font-family: 'Segoe UI', sans-serif;
 }
-.brand-bottom-right i {
-font-size: 0.9rem;
-color: #38bdf8;
-text-shadow: 0 0 2px rgba(0,0,0,0.3);
+
+/* Controles aparecem/desaparecem com toque/mouse (mas agora fixos, removemos esse comportamento? O usuário pediu fixo, então não precisa sumir) 
+   Vamos manter sempre visíveis conforme solicitado "fixo" */
+.controles-Zapping, .btn-abrir-menu {
+opacity: 1 !important;
+visibility: visible !important;
 }
-/* Controles aparecem/desaparecem com toque/mouse */
-.controles-ocultos {
-opacity: 0;
-visibility: hidden;
-}
-.controles-visiveis {
-opacity: 1;
-visibility: visible;
-}
+
 @media (max-width: 600px) {
 .aviso-canal-id { font-size: 1rem; padding: 6px 14px; top: 15px; }
 .btn-abrir-menu { left: 15px; top: 15px; width: 40px; height: 40px; }
-.controles-Zapping { right: 12px; padding: 8px; gap: 10px; }
-.btn-zap { width: 46px; height: 46px; font-size: 1.2rem; }
+.controles-Zapping { top: 12px; gap: 8px; padding: 6px 12px; }
+.btn-zap { width: 38px; height: 38px; font-size: 1rem; }
 .brand-bottom-right { font-size: 0.7rem; bottom: 12px; right: 12px; }
 }
 --></style>
@@ -180,7 +178,7 @@ visibility: visible;
 <div class='no-items section' id='config-geral'></div>
 <div class='app-conteudo' id='plataformaInteira'>
 <div class='aviso-canal-id' id='alertaNomeCanal'></div>
-<div class='brand-bottom-right'><i class="fa-solid fa-tv"></i> ROGER12 TV</div>
+<div class='brand-bottom-right'>ROGER12 TV</div>
 <button class='btn-abrir-menu' id='btnMenuPrincipal' onclick='toggleMenu()'>
 <i class='fa-solid fa-bars'></i>
 </button>
@@ -712,19 +710,16 @@ visibility: visible;
         "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEg5-Wdb91-q33y_RFwQIILuFAXgc5drwKdiMiK-FPSAg2ZcOBSDWdO43m23cM6x8I6TLrJTKSw5XGCnN8wUW-26lMgYaTERP2T9lebPrcDnhWZJVMgV1OY3J5Qt7tE7xsnZpeoTGETPb2QI6GbwXb58fKWc7vOtvULM6zylIW6PJ35BT_6XusCmwMSTwZaw\/s500\/1000094456.png",
         "player": "https://22.embedtv.lat/hboplus",
         "player2": "https:\/\/tvnow.best\/api\/stream\/Ocotlan0317@gmail.com\/Chino1976!\/livetv.epg\/hbo.plus.br.m3u8"
-    },
-	
-  
+    }
     ];
 
-    var playerAtivo = null, canalFocado = null, timerAviso = null, timerControles = null;
+    var playerAtivo = null, canalFocado = null, timerAviso = null;
 
     function montarPlataforma() {
         var grade = document.getElementById('gradeCanais');
         if(!grade) return;
         atualizarListaCanais();
         if(listaCanais.length > 0) abrirPlayerNoPalco(listaCanais[0].id);
-        iniciarControleVisibilidade();
     }
 
     function atualizarListaCanais() {
@@ -867,35 +862,6 @@ visibility: visible;
         } else {
             (document.exitFullscreen || document.webkitExitFullscreen).call(document);
         }
-    }
-
-    function iniciarControleVisibilidade() {
-        var painel = document.getElementById('painelControles');
-        var btnMenu = document.getElementById('btnMenuPrincipal');
-        if(!painel) return;
-        function mostrarControles() {
-            painel.classList.add('controles-visiveis');
-            painel.classList.remove('controles-ocultos');
-            if(btnMenu) {
-                btnMenu.classList.add('controles-visiveis');
-                btnMenu.classList.remove('controles-ocultos');
-            }
-            if(timerControles) clearTimeout(timerControles);
-            timerControles = setTimeout(function() {
-                painel.classList.remove('controles-visiveis');
-                painel.classList.add('controles-ocultos');
-                if(btnMenu) {
-                    btnMenu.classList.remove('controles-visiveis');
-                    btnMenu.classList.add('controles-ocultos');
-                }
-            }, 3000);
-        }
-        painel.classList.add('controles-ocultos');
-        if(btnMenu) btnMenu.classList.add('controles-ocultos');
-        document.addEventListener('mousemove', mostrarControles);
-        document.addEventListener('touchstart', mostrarControles);
-        document.addEventListener('keydown', mostrarControles);
-        mostrarControles();
     }
 
     window.addEventListener('keydown', function(e) {
