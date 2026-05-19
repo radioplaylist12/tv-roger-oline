@@ -202,11 +202,11 @@ body {
 
 /* CÍRCULO TRANSPARENTE COM BORDA PISCANDO (VERDE E AMARELO) */
 .circulo-animado {
-  width: 64px;      /* ← ALTERE AQUI O TAMANHO DO CÍRCULO (e da imagem dentro) */
-  height: 64px;
-  border-radius: 100%;
+  width: 32px;      /* ← ALTERE AQUI O TAMANHO DO CÍRCULO (e da imagem dentro) */
+  height: 32px;
+  border-radius: 50%;
   background: transparent;  /* fundo transparente */
-  border: 4px solid;
+  border: 2px solid;
   /* CORES DA BORDA (verde e amarelo) – ALTERE AQUI AS CORES DO PISCA-PISCA */
   border-color: #10b981;    /* verde inicial */
   animation: piscaBorda 1.2s ease-in-out infinite;
@@ -216,10 +216,10 @@ body {
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
 
-/* Ajuste do tamanho da imagem dentro do círculo (acompanha o tamanho do círculo) */
+/* Ajuste do tamanho da imagem dentro do círculo */
 .circulo-animado img {
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
   object-fit: contain;
   filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
 }
@@ -259,10 +259,10 @@ body {
 <div class="app-conteudo" id="plataformaInteira">
   <div class="aviso-canal-id" id="alertaNomeCanal"></div>
 
-  <!-- LOGO SUPERIOR DIREITO (círculo transparente com borda piscando + imagem + texto) -->
+  <!-- LOGO SUPERIOR DIREITO -->
   <div class="logo-container">
     <div class="circulo-animado">
-      <!-- Substitua "pai.png" pelo caminho da sua imagem (ou use um ícone padrão) -->
+      <!-- Substitua "pai.png" pelo caminho da sua imagem PNG (fundo transparente de preferência) -->
       <img src="pai.png" alt="logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
     </div>
     <span class="texto-logo">patico tv</span>
@@ -306,29 +306,15 @@ const listaCanais = [
   { id: "4555436", canal: "FIFA+", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioWSwmkA421yze7b05QNFGxaKkFIIa6Y2bhNTKx-D6rdUkpXF4fAaFocjwn3PME_vQ3aYGPq05WT1ufz0yYR56ohoZgAhZtq2FNl9JGr2qXnmYn_Rfh4Cp6hu1LF38eK5FnJQt-PCtOXFbQk0hQoDPwD-iKTQ6JuiFKvp7TdtuO7nI1tyeV7pV-ILV8p56/s200/1000094111.png", player: "https://c2657533.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UGxleC1icl9GSUZBUGx1c1BvcnR1Z3Vlc2VfSExT/playlist.m3u8" },
   { id: "4260546872", canal: "Prime video 1", capa: "https://xatimg.com/image/FX5q4eY1VqPg.jpg", player: "https://22.embedtv.lat/primevideo" },
   { id: "426028", canal: "Premiere", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere" },
-  { id: "42602348", canal: "Premiere 2", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere2" },
-  { id: "425997", canal: "Premiere 3", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere3" },
-  { id: "426174", canal: "Premiere 4", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere4" },
-  { id: "425985", canal: "Premiere 5", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere5" },
-  { id: "426171", canal: "Premiere 6", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere6" },
-  { id: "425984", canal: "Premiere 7", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere7" },
-  { id: "4258984", canal: "Premiere 8", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm/s500/1000089572.png", player: "https://22.embedtv.lat/premiere8" },
-  { id: "426013", canal: "TNT Novelas", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMl-EkP86bDSn6snwuXSXNWqNnaKmycLMvA4dl1gL3uH1oT-o9DkEqKhoQVk3nxdSHrZsgSwj_Xa_n1i8dtbMv4x89NFBjTjNyS9Me5l01Z6M9dq4-7nMfX-NggyjJ2dm29eZM8QW4oMkKllg1wZa9PR1Pacqgciw6oAiYJJCiPTMLnuLMb2sJ14W8dhWg/s960/1000284718.png", player: "https://cdn-3.nxplay.com.br/TNT_NOVELAS/index.m3u8" },
-  { id: "425993", canal: "TNT Séries", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMl-EkP86bDSn6snwuXSXNWqNnaKmycLMvA4dl1gL3uH1oT-o9DkEqKhoQVk3nxdSHrZsgSwj_Xa_n1i8dtbMv4x89NFBjTjNyS9Me5l01Z6M9dq4-7nMfX-NggyjJ2dm29eZM8QW4oMkKllg1wZa9PR1Pacqgciw6oAiYJJCiPTMLnuLMb2sJ14W8dhWg/s960/1000284718.png", player: "https://origin-fast.b-cdn.net/TNT_SERIES_TK/index.m3u8" },
-  { id: "426084", canal: "TNT", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMl-EkP86bDSn6snwuXSXNWqNnaKmycLMvA4dl1gL3uH1oT-o9DkEqKhoQVk3nxdSHrZsgSwj_Xa_n1i8dtbMv4x89NFBjTjNyS9Me5l01Z6M9dq4-7nMfX-NggyjJ2dm29eZM8QW4oMkKllg1wZa9PR1Pacqgciw6oAiYJJCiPTMLnuLMb2sJ14W8dhWg/s960/1000284718.png", player: "https://origin-fast.b-cdn.net/TNT/index.m3u8" },
-  { id: "523281", canal: "Tooncast", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi29Y7bCYVPqZVqXJcAzLDj_sPf37PJwfa5F1zEoQNhS3AFlHHmMbBYpBw64efIyq0qxMbFIQv2AV1MdOH_elp9crrhAZ70_owSEel7ub8ctVdexZbDYL4sCttAfRxcYYFGYazYvvGoVJBpbmMigF7GMfrlL4ltVYDnM1qdgQqNSMbHaPhegRSpAsz5gM0Y/s500/1000107747.png", player: "https://cdn-3.nxplay.com.br/TOONCAST_TK/index.m3u8" },
-  { id: "426027", canal: "TV Aparecida", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkHax9KV5TiGZC-QRcq-bN0aRezzU9imXCN-aS0jypMyEi3ZBjEZz-vmNKw1O4-XOpRF31D9EV3zlHCf_-O0egULc6WhUc1kfxEayREobnaAo5ByH2lKtvcaoBDFF21C2VZMAwK6DwLdaE_jgufeAjbj1hwONAPixDwkSYSJkzMVq-n2bi8dnmh7F1OGIi/s300/1000092647.png", player: "https://cdn.jmvstream.com/w/LVW-9716/LVW9716_HbtQtezcaw/playlist.m3u8" },
+ 
   { id: "426103", canal: "GNT", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjaqP5XcRSVUcVsrNmu1xPB-TBmxlLB8csQ1Suk59ssXXK7aizw-_NhCIoq4jp_Xrjy9PVfI6m26uvsgAJ8y_uK-_WOXHtbsZu93-1DVO77r5GDeP35RodWDsincnGHaBxeBYCA2R-bG5kHoPF8DHyzMhliWc63t209vP7cE0Vts8Zo4WUDj64xI5SIYch1/s500/1000095840.png", player: "https://14.cdn3embed.xyz/gnt/index.m3u8" },
   { id: "426108", canal: "CNN Brasil", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgml9vNRwzmC18MGueh5TB4baPH1T9Sw0PgN0a0fR02IBxbTQTuTycDqQ6Gzoz11OS5uVB839SHyDEjRKznVQErCUUjHgOX1hFYks_h-znVMMyOavemxi5ZeFch9xKeH44u7nytIhKU-0bxJRHOASfzB3ERCvQtXAIysMuK53u4bQCih_hKnvcs7Jn3BjHf/s500/1000092648.png", player: "https://d25usgadhphvwi.cloudfront.net/v1/manifest/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-y4riz7eo92zpm/af2e80dd-b360-4c41-855d-3740b87ba21c/0.m3u8" },
   { id: "417188", canal: "History 2", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1Uatflc6CoV-aAE-tp4i-fQbOau6hXxB1JczqILxkENzmgCn_cvQX8Rm7T0FXy3KMqnBbXCySp-uDCgxMO8hNqDQ3Ox2co3C9HTj2A0Iw7qy1HjOBDzuMVWzLB5owYnnY3mWuQtcexFSK0JnNJ_hlzbFmEOGnoUtokwuGMTUsRQ1jw4R9jMZ0Sml3g3rX/s300/1000095878.png", player: "https://cdn-3.nxplay.com.br/HISTORY_2_TK/index.m3u8" },
   { id: "426149", canal: "History", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1Uatflc6CoV-aAE-tp4i-fQbOau6hXxB1JczqILxkENzmgCn_cvQX8Rm7T0FXy3KMqnBbXCySp-uDCgxMO8hNqDQ3Ox2co3C9HTj2A0Iw7qy1HjOBDzuMVWzLB5owYnnY3mWuQtcexFSK0JnNJ_hlzbFmEOGnoUtokwuGMTUsRQ1jw4R9jMZ0Sml3g3rX/s300/1000095878.png", player: "https://cdn-3.nxplay.com.br/HISTORY_TK/index.m3u8" },
-  { id: "45899433", canal: "Sony Channel", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJh0KUy260lvGMu86ENfHsIK8UrTheGeXxMxYRSogGz6Yln93Poi_xvmCzJOfVbXtntoyVmf28wraSyP-OgE7mEg1Ohnacgp2IdO_gjAtLH8MTSBJbXWOPV3KRmgFM-OKT44TbjImosAY8IkaERpL8HxECFbJIPykOm8ioiBBvofoi5GYF6H8qEn2n-frF/s300/1000123202.png", player: "https://origin-fast.b-cdn.net/SONY_CHANNEL/index.m3u8" },
-  { id: "19393383838", canal: "Filmes&Arts", capa: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/FILMANDARTS.png/250px-FILMANDARTS.png", player: "https://cdn-3.nxplay.com.br/Film_Arts_Brasil/index.m3u8" },
-  { id: "426151", canal: "PrimeBox", capa: "https://upload.wikimedia.org/wikipedia/commons/1/16/PrimeBoxBrazil2019.png", player: "https://origin-fast.b-cdn.net/PRIME_HD/index.m3u8" },
+ 
   { id: "417588", canal: "Sony Movies", capa: "https://s10019.cdn.ncms.io/wp-content/uploads/2023/03/sony-movies-logo.png", player: "https://cdn-5.nxplay.com.br/SONY_MOVIES/index.m3u8" },
   { id: "426201", canal: "HGTV", capa: "https://images.seeklogo.com/logo-png/31/2/hgtv-logo-png_seeklogo-314526.png", player: "https://cdn-3.nxplay.com.br/HGTV_BR_NX/index.m3u8" },
-  { id: "523356", canal: "LifeTime", capa: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Logo_Lifetime_2020.svg/1280px-Logo_Lifetime_2020.svg.png", player: "https://origin-fast.b-cdn.net/LIFE_TIME_TK/index.m3u8" },
-  { id: "523313", canal: "AXN", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyy021t3PkcvStW4JhcekFVex-JtJIWgaEF6K7C8VBLHXFpdOMwZQPckqzOtWqSr6lt37PNajhHXdYKDaUxsJautc-xz3SgKIgV9wKeDI3NT0D6MTN2tLWabuLkT7SLRFtYn9PenBGl_2Qbemx5-uQ-gLf8wtK3ocWNZXmdCkolxJeqpTCslq_a3onMtqw/s500/1000094509.png", player: "https://cdn-5.nxplay.com.br/AXN_TK/index.m3u8" },
+ 
   { id: "523311", canal: "A&E", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrmfxZGfmdZuh_LjjcP6awqaQ_mIvX9wgecg46vqdXdn86d0nv_6KXYUc8VsHrhlfEbJsouQmFN_s4z43bnc5qokx0GKAWkih3CJORb97Kme6dZgXhpKcwaSx3AkP2Gc3RSbcE5rMrpPSkDgsJPNUPhc9LnFLW1bfBfw2wZrHhEUMWcos_fJ27mis_TAb-/s500/1000094503.png", player: "https://origin-fast.b-cdn.net/AeE_BRASIL_TK/index.m3u8" },
   { id: "523312", canal: "AMC", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglAgEf3loVmVwbV2NqSLP2pHxWFSmv6M5RCmyL6xf6flVQjZUIHT-2nu8Cf81fAte7HnyshlIevfFxyblEgoUmu2J1DJuOogQ1NFhK7hoZDGNLVeazoJQIMGcfO152HskH3Ytbl9W_-xwYCOMyy8IVfLeqODoKp-Vc8ZmHQdRq7ysINbQdItOZiNkfTFVN/s500/1000094506.png", player: "https://origin-fast.b-cdn.net/AMC_BRASIL_TK/index.m3u8" },
   { id: "523297", canal: "Animal Planet", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRN1HFA4SreutN51iHbcWQM1YvvNmNwnl-hb5EPsbkaGdvKeMZKmJeWincdAiDAEK5ByOl3XV1mgUtdSN0F7Zou_3CYAAgMWvFeDVW0ZXl1v-UwwVKzui34QKpnj-44hWqMZpk_CTkNJiD0ATTryCvXI8FVxjNTAZ3kkUs06kcneqsThuz3ZNt2yV1YtGK/s500/1000094508.png", player: "https://cdn-3.nxplay.com.br/ANIMAL_PLANET/index.m3u8" },
@@ -364,12 +350,7 @@ const listaCanais = [
   { id: "523302", canal: "TV Gazeta", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjguc8vE1z42HhoO-RUPN17dNqNFYIw4FdKuZmrbeiwPAK1INaYP367KtI8nyW1W0gEd83HGyDYeHaTO0jnBFykr3Y9BAXux0O2uL72ebl9jS_ApBIlcvRykibm6RF_VYhjIptr0WMv0_e30LA_KuekGwQDiLi-RcAUqMlnlmlIEJMYpGjNsL14PimRIYtX/s200/1000095826.png", player: "https://video08.logicahost.com.br/tvc21/tvc21/playlist.m3u8" },
   { id: "426056", canal: "Canal Rural", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzk_Q36PmiqoyR036OItUyEzrGyMgYpkcbvyaxmvSI6jGzpQwttMHUEuhW-YUEDHsVKnfLTijA9ttpm34zRrG1w8b10iL2owHcsahcsm9mKyBa24V3zX3Uo_sV_vilLjGgI7AhFGALrtzD_U0qgCMXnZ1maMUo2kJnNcrZU5aBdYbhEMcig4J4FDk0qLFm/s200/1000095830.png", player: "https://607d2a1a47b1f.streamlock.net/crur/smil:canalrural.smil/playlist.m3u8" },
   { id: "523305", canal: "TV Cultura", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNP_PfRXK02Favkxzmd6mb6S0dC0-TgxCp4sa17O0b2mNhie5CtPLJVwBfxPFKTYTWaMhu2fkmLaZnYnTK5eAJkRP-Lb-Pi3DZgqbZP4GeGRaWN1x2Kg1xBRllZxZNQMzniUW-xaAPPfONDDpPZ1L69nWoQTv198UTZJDymLs2T6pWAF3RpcVZYIBjl0G6/s2400/1000084398.png", player: "https://player-tvcultura.stream.uol.com.br/live/tvcultura.m3u8" },
-  { id: "417383", canal: "HBO", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh17PvJ6y6IwCXOAi7_KbsNzClpOEjYJYuNG2-0uwVmNFGEhBWmk5Z-4co30sMM4MVKHGWVwBZyh1hZ45tyvWJmRiK4Jqe8BqmyyerPDRzR2u6lqV_uoatcUiYddWnQJPfCbv_tJH8sIpZj7fMDhNaja0-u4IfaCSgiLntYO9IxeEbNJWYJFc-Pnk2Oou4K/s500/1000094455.png", player: "https://22.embedtv.lat/hbo" },
-  { id: "523348", canal: "HBO 2", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh17PvJ6y6IwCXOAi7_KbsNzClpOEjYJYuNG2-0uwVmNFGEhBWmk5Z-4co30sMM4MVKHGWVwBZyh1hZ45tyvWJmRiK4Jqe8BqmyyerPDRzR2u6lqV_uoatcUiYddWnQJPfCbv_tJH8sIpZj7fMDhNaja0-u4IfaCSgiLntYO9IxeEbNJWYJFc-Pnk2Oou4K/s500/1000094455.png", player: "https://22.embedtv.lat/hbo2" },
-  { id: "523274", canal: "HBO Signature", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1ckZgmag73YKkW7G52u0yVyEQcxu9gY1eoEwU8Ew0KojTY0dkylGg4xsdXOz-_DudnEjkBDwjYN9SLuK_5_NjAoFd0m2Hh8SDE9-3EPrHR0vOJSq9akQhsJansYLb7yKn2lZjoyqMzwCdXToz1YRlrMzoBMBv8Ajh9UTrAQT8orH1fnKAaSeFeFahITjo/s500/1000095871.png", player: "https://22.embedtv.lat/hbosignature" },
-  { id: "5253274", canal: "HBO pop", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh17PvJ6y6IwCXOAi7_KbsNzClpOEjYJYuNG2-0uwVmNFGEhBWmk5Z-4co30sMM4MVKHGWVwBZyh1hZ45tyvWJmRiK4Jqe8BqmyyerPDRzR2u6lqV_uoatcUiYddWnQJPfCbv_tJH8sIpZj7fMDhNaja0-u4IfaCSgiLntYO9IxeEbNJWYJFc-Pnk2Oou4K/s500/1000094455.png", player: "https://22.embedtv.lat/hbopop" },
-  { id: "426015", canal: "HBO Xtreme", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirenWIjiV_vw9l2t27K7UYS_TLTFzx7LdOrjo2AtnhqduUlox_fXjmPhMDceqIbMP1j8qYrQikv20l7cTkGOhmoSbLx8nXmN1eaiRs9sDsRmlRqyaOpKsX0wRgYuZ1kC2JCuE3s38a-xCNn1D7aYTmHMbig8eoQa0rUeIT_GIVmqC82-jTJ3CjcfEBLq2U/s252/1000095872.png", player: "https://22.embedtv.lat/hboxtreme" },
-  { id: "523290", canal: "HBO Family", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zzygHJZixy8l17fC2GqRVSZPCoe7ieX7hWVY4slbwx8MBNxjMDlfXMIP9cKx3zrVJpgCyGKb2F9QTq71q4MboB8sAo3k9d7ZAucowxDwNz1MLxebybbpQ1NCxLKEIDhTskwKR09oTdyCHiS-b39-5CrDtQezsSyytIpfRoxMdztI7R16VWBja63p-Fgn/s500/1000095848.png", player: "https://22.embedtv.lat/hbofamily" },
+ 
   { id: "523328", canal: "CNN", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgml9vNRwzmC18MGueh5TB4baPH1T9Sw0PgN0a0fR02IBxbTQTuTycDqQ6Gzoz11OS5uVB839SHyDEjRKznVQErCUUjHgOX1hFYks_h-znVMMyOavemxi5ZeFch9xKeH44u7nytIhKU-0bxJRHOASfzB3ERCvQtXAIysMuK53u4bQCih_hKnvcs7Jn3BjHf/s500/1000092648.png", player: "https://ww2.embedtv.lat/cnnbrasil" }
   
 ];
