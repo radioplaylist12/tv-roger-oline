@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ROGER12 TV - Ao Vivo Grátis</title>
-<meta name="description" content="Assista TV ao vivo grátis com qualidade HD. Canais esportivos, novelas, filmes e muito mais.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>PaticoTv - TV Ao Vivo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clappr/0.3.13/clappr.min.js"></script>
 <style>
@@ -14,17 +13,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root {
-  --fundo-site: #0a0c12;
-  --fundo-menu: rgba(10, 15, 29, 0.95);
-  --fundo-card: rgba(18, 26, 43, 0.6);
-  --borda: rgba(255, 255, 255, 0.06);
-  --azul: #0284c7;
-  --texto: #ffffff;
-}
 body {
-  background: var(--fundo-site);
-  color: var(--texto);
+  background: #0a0c12;
   height: 100vh;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
@@ -34,11 +24,6 @@ body {
   height: 100vh;
   position: relative;
   background: #000;
-}
-.box-cinema {
-  width: 100%;
-  height: 100%;
-  position: relative;
 }
 .moldura-video, #reprodutor-clappr, .moldura-video iframe {
   position: absolute;
@@ -54,10 +39,9 @@ body {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  padding: 6px 18px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background: rgba(0,0,0,0.8);
+  padding: 5px 14px;
+  font-size: 0.8rem;
   border-radius: 40px;
   border: 1px solid rgba(255,255,255,0.2);
   z-index: 999999;
@@ -70,34 +54,32 @@ body {
 .aviso-canal-id.mostrar { opacity: 1; }
 .btn-abrir-menu {
   position: absolute;
-  left: 16px;
-  top: 16px;
+  left: 12px;
+  top: 12px;
   z-index: 9999;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(8px);
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s;
 }
-.btn-abrir-menu:hover { background: rgba(2, 132, 199, 0.5); }
 .menu-lateral {
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
-  max-width: 260px;
+  max-width: 240px;
   height: 100%;
-  background: var(--fundo-menu);
+  background: rgba(10,15,29,0.95);
   backdrop-filter: blur(12px);
-  border-right: 1px solid var(--borda);
+  border-right: 1px solid rgba(255,255,255,0.05);
   z-index: 999999;
   transition: left 0.25s ease;
   display: flex;
@@ -105,50 +87,49 @@ body {
 }
 .menu-lateral.aberto { left: 0; }
 .topo-menu {
-  padding: 16px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--borda);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.topo-menu h2 { font-size: 0.9rem; font-weight: 600; }
+.topo-menu h2 { font-size: 0.8rem; font-weight: 600; color: #fff; }
 .topo-menu h2 span { color: #38bdf8; }
 .btn-fechar-menu {
   background: transparent;
   border: none;
   color: #94a3b8;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 .vitrine-canais {
   flex: 1;
   overflow-y: auto;
-  padding: 8px;
+  padding: 6px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 .item-canal {
-  background: rgba(18, 26, 43, 0.5);
+  background: rgba(18,26,43,0.4);
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 6px 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 4px 6px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
-  transition: 0.15s;
 }
 .item-canal.ativo {
   border-color: #0284c7;
-  background: rgba(2, 132, 199, 0.2);
+  background: rgba(2,132,199,0.15);
 }
 .capa-canal {
-  width: 32px;
-  height: 24px;
+  width: 26px;
+  height: 20px;
   background: #000;
-  border-radius: 4px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,99 +137,88 @@ body {
   flex-shrink: 0;
 }
 .capa-canal img { width: 100%; height: 100%; object-fit: contain; }
-.meta-canal h3 { font-size: 0.75rem; font-weight: 500; color: #fff; }
+.meta-canal h3 { font-size: 0.7rem; font-weight: 500; color: #fff; }
 .controles-Zapping {
   position: absolute;
-  bottom: 16px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
-  gap: 8px;
+  gap: 6px;
   z-index: 9999;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0,0,0,0.3);
   backdrop-filter: blur(12px);
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.15);
 }
 .btn-zap {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.85rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
-.btn-zap:hover { background: rgba(2, 132, 199, 0.7); transform: scale(1.02); }
+.btn-zap:hover { background: rgba(2,132,199,0.7); }
 .btn-zap:active { transform: scale(0.95); }
-.brand-bottom-right {
+
+/* Logo em PNG - substitua pelo caminho correto da sua imagem */
+.logo-png {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 16px;
+  right: 16px;
   z-index: 9999;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  background: linear-gradient(135deg, #e2e2e2, #38bdf8, #a855f7, #ec489a);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 4s ease infinite;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  height: 32px;
+  width: auto;
   pointer-events: none;
 }
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 @media (max-width: 600px) {
-  .aviso-canal-id { font-size: 0.75rem; top: 12px; padding: 4px 14px; }
-  .btn-abrir-menu { left: 12px; top: 12px; width: 34px; height: 34px; }
-  .controles-Zapping { gap: 6px; padding: 5px 12px; bottom: 12px; }
-  .btn-zap { width: 32px; height: 32px; font-size: 0.85rem; }
-  .brand-bottom-right { font-size: 0.7rem; bottom: 16px; right: 16px; }
-  .item-canal { padding: 4px 6px; }
-  .capa-canal { width: 28px; height: 20px; }
-  .meta-canal h3 { font-size: 0.7rem; }
+  .aviso-canal-id { font-size: 0.7rem; top: 10px; padding: 3px 12px; }
+  .btn-abrir-menu { left: 10px; top: 10px; width: 28px; height: 28px; }
+  .controles-Zapping { gap: 5px; padding: 4px 10px; bottom: 10px; }
+  .btn-zap { width: 28px; height: 28px; font-size: 0.75rem; }
+  .logo-png { height: 26px; bottom: 12px; right: 12px; }
+  .item-canal { padding: 3px 5px; }
+  .capa-canal { width: 22px; height: 18px; }
+  .meta-canal h3 { font-size: 0.65rem; }
 }
 </style>
 </head>
 <body>
 <div class="app-conteudo" id="plataformaInteira">
   <div class="aviso-canal-id" id="alertaNomeCanal"></div>
-  <div class="brand-bottom-right">ROGER12 TV</div>
-  <button class="btn-abrir-menu" id="btnMenuPrincipal" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+
+  <!-- SUA LOGO PNG - coloque o arquivo "paticotv.png" na mesma pasta -->
+  <img src="paticotv.png" class="logo-png" alt="PaticoTv">
+
+  <button class="btn-abrir-menu" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
   <div class="menu-lateral" id="menuCanais">
-    <div class="topo-menu"><h2>TV <span>ONLINE HD</span></h2><button class="btn-fechar-menu" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="topo-menu"><h2>TV <span>ONLINE</span></h2><button class="btn-fechar-menu" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button></div>
     <main class="vitrine-canais" id="gradeCanais"></main>
   </div>
   <div class="box-cinema">
-    <div class="controles-Zapping" id="painelControles">
-      <button class="btn-zap" onclick="canalAnterior()" title="Anterior"><i class="fa-solid fa-chevron-up"></i></button>
-      <button class="btn-zap" onclick="limparCachePlayer()" title="Limpar Cache"><i class="fa-solid fa-broom"></i></button>
-      <button class="btn-zap" onclick="toggleFullScreen()" title="Tela Cheia"><i class="fa-solid fa-expand"></i></button>
-      <button class="btn-zap" onclick="proximoCanal()" title="Próximo"><i class="fa-solid fa-chevron-down"></i></button>
-      <button class="btn-zap" onclick="embaralharCanais()" title="Embaralhar"><i class="fa-solid fa-random"></i></button>
+    <div class="controles-Zapping">
+      <button class="btn-zap" onclick="canalAnterior()"><i class="fa-solid fa-chevron-up"></i></button>
+      <button class="btn-zap" onclick="limparCachePlayer()"><i class="fa-solid fa-broom"></i></button>
+      <button class="btn-zap" onclick="toggleFullScreen()"><i class="fa-solid fa-expand"></i></button>
+      <button class="btn-zap" onclick="proximoCanal()"><i class="fa-solid fa-chevron-down"></i></button>
+      <button class="btn-zap" onclick="embaralharCanais()"><i class="fa-solid fa-random"></i></button>
     </div>
     <div class="moldura-video" id="playerDestino"></div>
   </div>
 </div>
 
 <script>
-// ===================== LISTA COMPLETA DE CANAIS =====================
+// ========== LISTA DE CANAIS (resumida mas funcional) ==========
 const listaCanais = [
-  { id: "426029", canal: "Globo - SP", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8BKQoHSHE_rJ1es7TLJVa3w6YZCrAaya4a1QJ-0EZPdZ8pmzKxoeQF_GIaUFow-h3dgfXCABIgjkKmP3yy7UNpavxTfKiQPPw9nh3XPKNxh5zSFydSb6DE8Xpl_msXQVbMt7r5Su7m3Y_0ID8IdnA0xoOl4sCGsPbniZ5H360ImTLdRV_d6SHNCaNqvRy/s500/1000095836.png", player: "https://s2.micineovs.com/GLOBO/index.m3u8?token=16FOTt9Ae2m8" },
+ { id: "426029", canal: "Globo - SP", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8BKQoHSHE_rJ1es7TLJVa3w6YZCrAaya4a1QJ-0EZPdZ8pmzKxoeQF_GIaUFow-h3dgfXCABIgjkKmP3yy7UNpavxTfKiQPPw9nh3XPKNxh5zSFydSb6DE8Xpl_msXQVbMt7r5Su7m3Y_0ID8IdnA0xoOl4sCGsPbniZ5H360ImTLdRV_d6SHNCaNqvRy/s500/1000095836.png", player: "https://s2.micineovs.com/GLOBO/index.m3u8?token=16FOTt9Ae2m8" },
   { id: "425966", canal: "Record", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwD3rQ7GnjVWg99MtiqlZYzPzbqwOaBd3quhCM8c3EpA_q-Vfd6PWv5BuaTSvrkAJy8VGOQViYohrj44LS2SuIUztdENRSZ7_pRloDLQvEpj9J7nhrItcMPF2pgeoMjnZdqEKcB4iYRB-O0K0WP0n46W-anYyniPk7BOmGQp9VxTQKhM4tGspm6UMvq_Hy/s200/1000095886.png", player: "https://cdn.jmvstream.com/w/LVW-10842/LVW10842_513N26MDBL/playlist.m3u8" },
   { id: "sbtpa", canal: "SBT SP", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC9IlW1r8EqQ9W_olbWZEfIzYRimt94kS-X2r23CPW9FAaH4kF7S_wTgr-UwYTFBKKY5_zw-Rk1hLptUeuHaWUEdcQTMxqtxLsnph7YmRyAM5Q0uNIr8_5l0LwtvzHuqqXiHjjUiJkyG0U_Xee9PkxK-J3jQe6-COFgRhWwPXA5xyubcWOImXmqLoaNWd-/s500/1000095891.png", player: "https://cdn.live.br1.jmvstream.com/w/LVW-9359/LVW9359_XSyReL0QVf/chunklist.m3u8" },
   { id: "nenhum3", canal: "SBT News", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjC9IlW1r8EqQ9W_olbWZEfIzYRimt94kS-X2r23CPW9FAaH4kF7S_wTgr-UwYTFBKKY5_zw-Rk1hLptUeuHaWUEdcQTMxqtxLsnph7YmRyAM5Q0uNIr8_5l0LwtvzHuqqXiHjjUiJkyG0U_Xee9PkxK-J3jQe6-COFgRhWwPXA5xyubcWOImXmqLoaNWd-/s200/1000095891.png", player: "https://sbtnews.maissbt.com/index.m3u8" },
@@ -259,9 +229,7 @@ const listaCanais = [
   { id: "418722", canal: "ESPN 2", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitlbHTJfq4j0hCBH95XuPPyw-jwwFeMtRcNgDyLcA-7pVp2KE71nUSXtv_RjuH2fZc1XCuCXRaZUy3tIrdKfff5JUY6ktxRin26RmPceRLPfzF07HZTyBt2plHElBoyicIfNf3uXEu1fuJ-9dWrJCkzS8YXqiNtUHYQ5vbKvCmwgKGCU3fOZwfLjoe7kCY/s500/1000094302.png", player: "https://origin-fast.b-cdn.net/ESPN_2/index.m3u8" },
   { id: "523329", canal: "ESPN 3", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPaPUM4s1h5DF-Ix7kVAIe9hx8Dr9n7n5jASg5hgS26bo2jFVvif0N2z_1QDBlV-JCvJHWcrLYgj2miCFUxrEJXh3S-rrELJHe2hVBebT2gYLS1Nm4-zZQEXq35Ym_6h6K51g2FtYSicL2pyv5WD_FjpRzbwi_5wweweiw2lxXiX_CHMNtlTDg1iexM1UI/s300/1000095754.png", player: "https://origin-fast.b-cdn.net/ESPN_3/index.m3u8" },
   { id: "523357", canal: "Globo News", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjd83mDWVUee5vSA8G184YKcQwphtkV11WCs58kX159wEyUWPT6aENYAyrvJcwHaWo-p6JYqHojyv-HHt90qmHDoOs30HXip3_uuKS_NCx37jBa3zq95arCEXPmHrgyHNMSxCTubGmEiENG4gV6cCvkUCftT2nKv2MIfQmfCvlPaxrWkF87a7nnxVh096L8/s300/1000095755.png", player: "https://ww2.embedtv.lat/globonews" },
-  
   { id: "426054682", canal: "SporTV", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjip9UUdroAnPWpqOoYsmr4cpp-v1EBJceFSpc-PT6GmniKEhZYjqarBQ3vCXENQaL1_7aghKOYSXKaSpq97FGERIYKrTTIwcLZAI2qBM_DqL3yVQb5P50g8ElJCpQonNLmzdHxasoAKJMo8Cw6vv-Cci3f3d8NKopzSnQHk7v3c3Hxw_x3Ofnnil3VA-SW/s285/1000095893.png", player: "https://22.embedtv.lat/sportv" },
- 
   { id: "A1qqqqq", canal: "NSports", capa: "https://upload.wikimedia.org/wikipedia/commons/5/54/Logo_NSports_Horizontal.png", player: "https://cc-zv5hyc9jj47n5.akamaized.net/ogc/nsprt/nsprt_720p.m3u8" },
   { id: "Nenhum17", canal: "Xsports", capa: "https://upload.wikimedia.org/wikipedia/commons/3/3f/Xsports_logo.png", player: "https://origin-fast.b-cdn.net/XSPORTS/index.m3u8" },
   { id: "Nenhum7", canal: "GeTV", capa: "https://noflix.top/uploads/69b17a6052e37.svg", player: "https://amg00716-globo-amg00716c1-tcl-br-9495.playouts.now.amagi.tv/1080p-cc/index.m3u8" },
@@ -333,16 +301,17 @@ const listaCanais = [
   { id: "426015", canal: "HBO Xtreme", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirenWIjiV_vw9l2t27K7UYS_TLTFzx7LdOrjo2AtnhqduUlox_fXjmPhMDceqIbMP1j8qYrQikv20l7cTkGOhmoSbLx8nXmN1eaiRs9sDsRmlRqyaOpKsX0wRgYuZ1kC2JCuE3s38a-xCNn1D7aYTmHMbig8eoQa0rUeIT_GIVmqC82-jTJ3CjcfEBLq2U/s252/1000095872.png", player: "https://22.embedtv.lat/hboxtreme" },
   { id: "523290", canal: "HBO Family", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2zzygHJZixy8l17fC2GqRVSZPCoe7ieX7hWVY4slbwx8MBNxjMDlfXMIP9cKx3zrVJpgCyGKb2F9QTq71q4MboB8sAo3k9d7ZAucowxDwNz1MLxebybbpQ1NCxLKEIDhTskwKR09oTdyCHiS-b39-5CrDtQezsSyytIpfRoxMdztI7R16VWBja63p-Fgn/s500/1000095848.png", player: "https://22.embedtv.lat/hbofamily" },
   { id: "523328", canal: "CNN", capa: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgml9vNRwzmC18MGueh5TB4baPH1T9Sw0PgN0a0fR02IBxbTQTuTycDqQ6Gzoz11OS5uVB839SHyDEjRKznVQErCUUjHgOX1hFYks_h-znVMMyOavemxi5ZeFch9xKeH44u7nytIhKU-0bxJRHOASfzB3ERCvQtXAIysMuK53u4bQCih_hKnvcs7Jn3BjHf/s500/1000092648.png", player: "https://ww2.embedtv.lat/cnnbrasil" }
+  
 ];
 
 let playerAtivo = null, canalFocado = null, timerAviso = null;
 
-function montarPlataforma() {
-  atualizarListaCanais();
-  if (listaCanais.length) abrirPlayerNoPalco(listaCanais[0].id);
+function montar() {
+  atualizarLista();
+  if (listaCanais.length) abrirCanal(listaCanais[0].id);
 }
 
-function atualizarListaCanais() {
+function atualizarLista() {
   const grade = document.getElementById('gradeCanais');
   if (!grade) return;
   let html = '';
@@ -362,9 +331,9 @@ function atualizarListaCanais() {
 }
 
 function toggleMenu() { document.getElementById('menuCanais').classList.toggle('aberto'); }
-function clickCanal(id) { abrirPlayerNoPalco(id); toggleMenu(); }
+function clickCanal(id) { abrirCanal(id); toggleMenu(); }
 
-function mostrarAlerta(msg) {
+function alerta(msg) {
   const caixa = document.getElementById('alertaNomeCanal');
   if (!caixa) return;
   clearTimeout(timerAviso);
@@ -373,14 +342,14 @@ function mostrarAlerta(msg) {
   timerAviso = setTimeout(() => caixa.classList.remove('mostrar'), 1500);
 }
 
-function abrirPlayerNoPalco(id) {
+function abrirCanal(id) {
   const c = listaCanais.find(item => item.id === id);
   if (!c) return;
   canalFocado = c;
   document.querySelectorAll('.item-canal.ativo').forEach(el => el.classList.remove('ativo'));
   const el = document.getElementById(`item-${id}`);
   if (el) el.classList.add('ativo');
-  mostrarAlerta(c.canal);
+  alerta(c.canal);
   rodarVideo(c.player);
 }
 
@@ -395,61 +364,57 @@ function rodarVideo(url) {
     playerAtivo = new Clappr.Player({
       source: url, parentId: '#reprodutor-clappr', width: '100%', height: '100%',
       autoPlay: true, preload: 'auto',
-      playback: { playInline: true, hlsMinimumClusterDuration: 0.05, liveSyncDurationCount: 2, maxBufferLength: 2, maxMaxBufferLength: 4 }
+      playback: { playInline: true, hlsMinimumClusterDuration: 0.05, liveSyncDurationCount: 2, maxBufferLength: 2 }
     });
   } else {
     const frame = document.createElement('iframe');
     frame.src = url;
     frame.setAttribute('allowfullscreen', 'true');
-    frame.setAttribute('scrolling', 'no');
     frame.setAttribute('allow', 'autoplay; fullscreen');
-    frame.setAttribute('sandbox', 'allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation');
     wrapper.appendChild(frame);
   }
 }
 
 function limparCachePlayer() {
   if (!canalFocado) return;
-  mostrarAlerta("Limpando Cache...");
+  alerta("Limpando...");
   let url = canalFocado.player;
   const sep = url.includes('?') ? '&' : '?';
   url += sep + 'nocache=' + Date.now();
   if (playerAtivo) { playerAtivo.destroy(); playerAtivo = null; }
-  setTimeout(() => { mostrarAlerta(canalFocado.canal + " (Limpo)"); rodarVideo(url); }, 400);
+  setTimeout(() => { alerta(canalFocado.canal); rodarVideo(url); }, 400);
 }
 
 function proximoCanal() {
   const i = listaCanais.findIndex(c => c.id === canalFocado.id);
-  abrirPlayerNoPalco(listaCanais[(i + 1) % listaCanais.length].id);
+  abrirCanal(listaCanais[(i + 1) % listaCanais.length].id);
 }
 function canalAnterior() {
   const i = listaCanais.findIndex(c => c.id === canalFocado.id);
-  abrirPlayerNoPalco(listaCanais[(i - 1 + listaCanais.length) % listaCanais.length].id);
+  abrirCanal(listaCanais[(i - 1 + listaCanais.length) % listaCanais.length].id);
 }
 function embaralharCanais() {
   for (let i = listaCanais.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [listaCanais[i], listaCanais[j]] = [listaCanais[j], listaCanais[i]];
   }
-  atualizarListaCanais();
+  atualizarLista();
   const aleatorio = listaCanais[Math.floor(Math.random() * listaCanais.length)];
-  abrirPlayerNoPalco(aleatorio.id);
-  mostrarAlerta("Canais embaralhados!");
+  abrirCanal(aleatorio.id);
+  alerta("Embaralhado!");
 }
 function toggleFullScreen() {
   const el = document.getElementById('plataformaInteira');
-  if (!document.fullscreenElement && !document.webkitFullscreenElement)
-    (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
-  else
-    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  if (!document.fullscreenElement) el.requestFullscreen?.();
+  else document.exitFullscreen?.();
 }
 
 window.addEventListener('keydown', e => {
   if (e.key === 'ArrowUp') { e.preventDefault(); canalAnterior(); }
   else if (e.key === 'ArrowDown') { e.preventDefault(); proximoCanal(); }
-  else if (e.key === 'Enter' || e.key === 'f') { e.preventDefault(); if (canalFocado) toggleFullScreen(); }
+  else if (e.key === 'f') { e.preventDefault(); toggleFullScreen(); }
 });
-window.addEventListener('DOMContentLoaded', montarPlataforma);
+window.addEventListener('DOMContentLoaded', montar);
 </script>
 </body>
 </html>
