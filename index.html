@@ -5,7 +5,6 @@
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
 <title>TV Online HD - Assista TV Ao Vivo Grátis</title>
 <meta content='Assista aos seus canais favoritos com a TV Online HD. Acesse o melhor da programação de TV ao vivo grátis em alta definição e sem travamentos. Comece a assistir agora!' name='description'/>
-<meta content='https://metatags.io/images/meta-tags.png' property='twitter:image'/>
 <link href='https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap' rel='stylesheet'/>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'/>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/clappr/0.3.13/clappr.min.js'></script>
@@ -132,26 +131,29 @@ transform: scale(0.95);
 background: var(--verde-limpar) !important;
 border-color: var(--verde-limpar);
 }
-/* Top right text - Roger12 TV */
-.top-right-brand {
+/* MARCA ROGER12 TV - INFERIOR DIREITO - TOTALMENTE TRANSPARENTE */
+.brand-bottom-right {
 position: absolute;
-top: 20px;
-right: 20px;
+bottom: 16px;
+right: 16px;
 z-index: 9999;
-background: rgba(0,0,0,0.7);
-padding: 6px 14px;
-border-radius: 30px;
-font-size: 0.9rem;
-font-weight: 600;
-letter-spacing: 1px;
-border: 1px solid rgba(255,255,255,0.2);
-backdrop-filter: blur(4px);
-color: #fff;
+background: transparent;
+color: rgba(255, 255, 255, 0.75);
+font-size: 0.85rem;
+font-weight: 500;
+letter-spacing: 0.5px;
+display: flex;
+align-items: center;
+gap: 6px;
+backdrop-filter: none;
+text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 pointer-events: none;
+font-family: 'Segoe UI', sans-serif;
 }
-.top-right-brand i {
+.brand-bottom-right i {
+font-size: 0.9rem;
 color: #38bdf8;
-margin-right: 5px;
+text-shadow: 0 0 2px rgba(0,0,0,0.3);
 }
 /* Controles aparecem/desaparecem com toque/mouse */
 .controles-ocultos {
@@ -162,48 +164,12 @@ visibility: hidden;
 opacity: 1;
 visibility: visible;
 }
-/* MENSAGEM DE ENTRADA (MODAL GUIA) */
-.janela-guia-fundo {
-position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center;
-z-index: 9999999; opacity: 1; transition: opacity 0.2s ease;
-}
-.janela-guia-fundo.esconder {
-opacity: 0; pointer-events: none;
-}
-.caixa-guia-conteudo {
-background: var(--fundo-menu); border: 1px solid rgba(255,255,255,0.15);
-width: 90%; max-width: 440px; padding: 25px; border-radius: 16px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: center;
-}
-.caixa-guia-conteudo h2 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 700; color: #38bdf8; }
-.caixa-guia-conteudo p { font-size: 0.9rem; color: #a1a1aa; margin-bottom: 20px; }
-.lista-funcoes { display: flex; flex-direction: column; gap: 14px; text-align: left; margin-bottom: 25px; }
-.linha-funcao { display: flex; align-items: center; gap: 15px; }
-.linha-funcao .icone-amostra {
-width: 40px; height: 40px; border-radius: 50%; background: var(--fundo-card);
-border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center;
-justify-content: center; color: #fff; font-size: 1.1rem; flex-shrink: 0;
-}
-.linha-funcao .icone-quadrado {
-border-radius: 8px !important;
-}
-.linha-funcao .texto-explica b { color: #fff; font-size: 0.95rem; display: block; }
-.linha-funcao .texto-explica span { color: #94a3b8; font-size: 0.85rem; }
-.btn-entendi-guia {
-width: 100%; padding: 12px; border: none; background: var(--azul); color: #fff;
-font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer;
-transition: background 0.2s;
-}
-.btn-entendi-guia:hover { background: var(--azul-hover); }
 @media (max-width: 600px) {
 .aviso-canal-id { font-size: 1rem; padding: 6px 14px; top: 15px; }
 .btn-abrir-menu { left: 15px; top: 15px; width: 40px; height: 40px; }
 .controles-Zapping { right: 12px; padding: 8px; gap: 10px; }
 .btn-zap { width: 46px; height: 46px; font-size: 1.2rem; }
-.caixa-guia-conteudo { padding: 20px; }
-.caixa-guia-conteudo h2 { font-size: 1.2rem; }
-.top-right-brand { font-size: 0.7rem; top: 15px; right: 15px; }
+.brand-bottom-right { font-size: 0.7rem; bottom: 12px; right: 12px; }
 }
 --></style>
 <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
@@ -212,60 +178,9 @@ transition: background 0.2s;
 </head>
 <body>
 <div class='no-items section' id='config-geral'></div>
-<div class='janela-guia-fundo' id='modalGuia'>
-<div class='caixa-guia-conteudo'>
-<h2>Guia de Controles</h2>
-<p>Conheça as funções dos botões da tela:</p>
-<div class='lista-funcoes'>
-<div class='linha-funcao'>
-<div class='icone-amostra icone-quadrado'><i class='fa-solid fa-bars'></i></div>
-<div class='texto-explica'>
-<b>Menu de Canais (Canto Superior)</b>
-<span>Abre a lista lateral completa com todos os canais disponíveis.</span>
-</div>
-</div>
-<div class='linha-funcao'>
-<div class='icone-amostra'><i class='fa-solid fa-chevron-up'></i></div>
-<div class='texto-explica'>
-<b>Canal Anterior</b>
-<span>Volta instantaneamente para o canal anterior da lista.</span>
-</div>
-</div>
-<div class='linha-funcao'>
-<div class='icone-amostra' style='border-color: var(--verde-limpar);'><i class='fa-solid fa-broom' style='color: var(--verde-limpar);'></i></div>
-<div class='texto-explica'>
-<b>Limpar Cache</b>
-<span>Corrige travamentos e força o recarregamento limpo do sinal.</span>
-</div>
-</div>
-<div class='linha-funcao'>
-<div class='icone-amostra'><i class='fa-solid fa-expand'></i></div>
-<div class='texto-explica'>
-<b>Tela Cheia</b>
-<span>Expande o player para ocupar 100% da sua tela.</span>
-</div>
-</div>
-<div class='linha-funcao'>
-<div class='icone-amostra'><i class='fa-solid fa-chevron-down'></i></div>
-<div class='texto-explica'>
-<b>Próximo Canal</b>
-<span>Avança direto para o próximo canal em sequência.</span>
-</div>
-</div>
-<div class='linha-funcao'>
-<div class='icone-amostra'><i class='fa-solid fa-random'></i></div>
-<div class='texto-explica'>
-<b>Embaralhar Canais</b>
-<span>Reordena aleatoriamente a lista e toca um canal aleatório.</span>
-</div>
-</div>
-</div>
-<button class='btn-entendi-guia' onclick='fecharGuiaInicial()'>OK</button>
-</div>
-</div>
 <div class='app-conteudo' id='plataformaInteira'>
 <div class='aviso-canal-id' id='alertaNomeCanal'></div>
-<div class='top-right-brand'><i class="fa-solid fa-tv"></i> ROGER12 TV</div>
+<div class='brand-bottom-right'><i class="fa-solid fa-tv"></i> ROGER12 TV</div>
 <button class='btn-abrir-menu' id='btnMenuPrincipal' onclick='toggleMenu()'>
 <i class='fa-solid fa-bars'></i>
 </button>
@@ -354,46 +269,7 @@ transition: background 0.2s;
         "player": "https:\/\/origin-fast.b-cdn.net\/ESPN\/index.m3u8",
         "player2": "https:\/\/cdn-3.nxplay.com.br\/ESPN\/index.m3u8"
     },
-    {
-        "id": "418722",
-        "canal": "ESPN 2",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEitlbHTJfq4j0hCBH95XuPPyw-jwwFeMtRcNgDyLcA-7pVp2KE71nUSXtv_RjuH2fZc1XCuCXRaZUy3tIrdKfff5JUY6ktxRin26RmPceRLPfzF07HZTyBt2plHElBoyicIfNf3uXEu1fuJ-9dWrJCkzS8YXqiNtUHYQ5vbKvCmwgKGCU3fOZwfLjoe7kCY\/s500\/1000094302.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/ESPN_2\/index.m3u8",
-        "player2": "https:\/\/1.cdn9embed.xyz\/espn2\/index.m3u8"
-    },
-    {
-        "id": "523329",
-        "canal": "ESPN 3",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEiPaPUM4s1h5DF-Ix7kVAIe9hx8Dr9n7n5jASg5hgS26bo2jFVvif0N2z_1QDBlV-JCvJHWcrLYgj2miCFUxrEJXh3S-rrELJHe2hVBebT2gYLS1Nm4-zZQEXq35Ym_6h6K51g2FtYSicL2pyv5WD_FjpRzbwi_5wweweiw2lxXiX_CHMNtlTDg1iexM1UI\/s300\/1000095754.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/ESPN_3\/index.m3u8",
-        "player2": "https:\/\/1.cdn9embed.xyz\/espn3\/index.m3u8"
-    },
-    {
-        "id": "523357",
-        "canal": "ESPN 4",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjd83mDWVUee5vSA8G184YKcQwphtkV11WCs58kX159wEyUWPT6aENYAyrvJcwHaWo-p6JYqHojyv-HHt90qmHDoOs30HXip3_uuKS_NCx37jBa3zq95arCEXPmHrgyHNMSxCTubGmEiENG4gV6cCvkUCftT2nKv2MIfQmfCvlPaxrWkF87a7nnxVh096L8\/s300\/1000095755.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/ESPN_4\/index.m3u8",
-        "player2": "https:\/\/1.cdn9embed.xyz\/espn4\/index.m3u8"
-    },
-    {
-        "id": "418724",
-        "canal": "ESPN 5",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEg2toAf1f6KC78vI1hzjzKcME6TYQjV3-CrisatRXSJ9ejrLtC_J9ov4wK6SQtIChKMMEpEQy6LWhV75x3zgNDrFXmMa13zwGtC_MScOD68Ck9E2VJTAPn4rBzT7jsjfovtuxwSvi7QZ-1TwIc8D0f5lND6n3ByzWxTz_CO2T1k_KgvB9X-ZhLY4o2LGhyphenhyphen5\/s300\/1000094301.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/ESPN_5\/index.m3u8",
-        "player2": "https:\/\/1.cdn9embed.xyz\/espn5\/index.m3u8"
-    },
-    {
-        "id": "417391",
-        "canal": "ESPN 6",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEhpRpR_FhOcIAguhW1mZ6UyNL4MLKeKfXcdMhx7F25CNGhC138lYnB0D89Jn6HKYAeCxeyNsdtJmnBwoVQr-ZdH84yHDA3ztH2ButHVd6RDuPTTuLCWlXL8UEz42-lmUuImqyBg901kWim-TlFDKiRyymKSouTQvUir3DMpzvDoF92rn1FjyR-LIEX7aY2a\/s500\/1000094299.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/ESPN_6\/index.m3u8",
-        "player2": "https:\/\/origin-fast.b-cdn.net\/ESPN_6\/index.m3u8"
-    },
+   
     {
         "id": "426054682",
         "canal": "SporTV ",
@@ -402,30 +278,9 @@ transition: background 0.2s;
         "player": "https://22.embedtv.lat/sportv",
         "player2": "https:\/\/3.cdn9embed.xyz\/sportv2\/index.m3u8"
     },
-	{
-        "id": "42604682",
-        "canal": "SporTV 2 ",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjip9UUdroAnPWpqOoYsmr4cpp-v1EBJceFSpc-PT6GmniKEhZYjqarBQ3vCXENQaL1_7aghKOYSXKaSpq97FGERIYKrTTIwcLZAI2qBM_DqL3yVQb5P50g8ElJCpQonNLmzdHxasoAKJMo8Cw6vv-Cci3f3d8NKopzSnQHk7v3c3Hxw_x3Ofnnil3VA-SW\/s285\/1000095893.png",
-        "player": "https://22.embedtv.lat/sportv2",
-        "player2": "https:\/\/3.cdn9embed.xyz\/sportv2\/index.m3u8"
-    },
-	{
-        "id": "4260682",
-        "canal": "SporTV 3 ",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjip9UUdroAnPWpqOoYsmr4cpp-v1EBJceFSpc-PT6GmniKEhZYjqarBQ3vCXENQaL1_7aghKOYSXKaSpq97FGERIYKrTTIwcLZAI2qBM_DqL3yVQb5P50g8ElJCpQonNLmzdHxasoAKJMo8Cw6vv-Cci3f3d8NKopzSnQHk7v3c3Hxw_x3Ofnnil3VA-SW\/s285\/1000095893.png",
-        "player": "https://22.embedtv.lat/sportv3",
-        "player2": "https:\/\/3.cdn9embed.xyz\/sportv2\/index.m3u8"
-    },
-	{
-        "id": "Nenhum22",
-        "canal": "Canal 11",
-        "categoria": "Esportes",
-        "capa": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/0\/0b\/Logo_Canal_11_FPF.svg\/3840px-Logo_Canal_11_FPF.svg.png",
-        "player": "https:\/\/dy4isoelz3s0x.cloudfront.net\/0_hd.m3u8",
-        "player2": "https:\/\/dy4isoelz3s0x.cloudfront.net\/0_hd.m3u8"
-    },
+	
+	
+	
 	{
         "id": "A1qqqqq",
         "canal": "NSports",
@@ -478,78 +333,7 @@ transition: background 0.2s;
         "player": "https://22.embedtv.lat/premiere",
         "player2": "https://22.embedtv.lat/premiereclubes"
     },
-	{
-        "id": "42602348",
-        "canal": "Premiere 2",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere2",
-        "player2": "https://22.embedtv.lat/premiere2"
-    },
-    {
-        "id": "425997",
-        "canal": "Premiere 3",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere3",
-        "player2": "https:\/\/1.cdn9embed.xyz\/premiere3\/index.m3u8"
-    },
-    {
-        "id": "426174",
-        "canal": "Premiere 4",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere4",
-        "player2": "https:\/\/xn---22--11--33--88--75---------b25zjfpkmbt1n9g9zza94e.xn----------------g34l3fkcn6n2hmd3acobj33ac2a7a8lufomma7cf2b1sh.xn---1l1--5o4dxb.xn--pck.xn--zck.xn--0ck.xn--pck.xn--yck.xn-----0b4asja8cbew2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e7qri.xn--1ck2e1b\/docs\/premiere4\/__index.m3u8?cc=y&sv=12&nu3zAQc9HC3GbwJq=1777197164-MkZJyL33V9ZVEU3DOPW2qoJa7rM4SLtlxR31CenBM7A%3D"
-    },
-    {
-        "id": "425985",
-        "canal": "Premiere 5",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere5",
-        "player2": "https:\/\/xn---22--11--33--88--75---------b25zjfpkmbt1n9g9zza94e.xn----------------g34l3fkcn6n2hmd3acobj33ac2a7a8lufomma7cf2b1sh.xn---1l1--5o4dxb.xn--pck.xn--zck.xn--0ck.xn--pck.xn--yck.xn-----0b4asja8cbew2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e7qri.xn--1ck2e1b\/docs\/premiere5\/__index.m3u8?cc=y&sv=4&nu3zAQc9HC3GbwJq=1777197287-3kXdlYsZtgOxXCptClhtmtPBPLiSTqicRBtlXRj6XGM%3D"
-    },
-    {
-        "id": "426171",
-        "canal": "Premiere 6",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere6",
-        "player2": "https:\/\/xn---22--11--33--88--75---------b25zjfpkmbt1n9g9zza94e.xn----------------g34l3fkcn6n2hmd3acobj33ac2a7a8lufomma7cf2b1sh.xn---1l1--5o4dxb.xn--pck.xn--zck.xn--0ck.xn--pck.xn--yck.xn-----0b4asja8cbew2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e7qri.xn--1ck2e1b\/docs\/premiere6\/__index.m3u8?cc=y&sv=45&nu3zAQc9HC3GbwJq=1777197443-M7GsnazdrwQSHgJ7rQciYbz%2FGv%2BGjEm5HlPzsU%2Bre9w%3D"
-    },
-    {
-        "id": "425984",
-        "canal": "Premiere 7",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere7",
-        "player2": "https:\/\/xn---22--11--33--88--75---------b25zjfpkmbt1n9g9zza94e.xn----------------g34l3fkcn6n2hmd3acobj33ac2a7a8lufomma7cf2b1sh.xn---1l1--5o4dxb.xn--pck.xn--zck.xn--0ck.xn--pck.xn--yck.xn-----0b4asja8cbew2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e7qri.xn--1ck2e1b\/docs\/premiere7\/__index.m3u8?cc=y&sv=11&nu3zAQc9HC3GbwJq=1777198124-qQMwo19PWPH0d1on3GReZydP%2BBKXU1TNDXHm%2BboeYbs%3D"
-    },
-	{
-        "id": "4258984",
-        "canal": "Premiere 8",
-        "categoria": "Esportes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjvobTg1nwGv6Aa4vd9q9iCozx0eaUJG2rAml-DXf5N1HoXLwm4LZcEb8i5ChNxbLunF5i4FaQZHBGMjoi5dOPZOm0jhLj5KvmUnX0IG_eaLoxSLcCKXsuWCMHIu45kecXJa9gctpaWe_fMWVbbwY8HpMCAvxJ8J5KUpR2hzp-qiT8D1SfnmCyM5D0z4nmm\/s500\/1000089572.png",
-        "player": "https://22.embedtv.lat/premiere8",
-        "player2": "https:\/\/xn---22--11--33--88--75---------b25zjfpkmbt1n9g9zza94e.xn----------------g34l3fkcn6n2hmd3acobj33ac2a7a8lufomma7cf2b1sh.xn---1l1--5o4dxb.xn--pck.xn--zck.xn--0ck.xn--pck.xn--yck.xn-----0b4asja8cbew2b4b0gd0edbjm2jpa1b1e9zva7a0347s4da2797e7qri.xn--1ck2e1b\/docs\/premiere7\/__index.m3u8?cc=y&sv=11&nu3zAQc9HC3GbwJq=1777198124-qQMwo19PWPH0d1on3GReZydP%2BBKXU1TNDXHm%2BboeYbs%3D"
-    },
-	{
-        "id": "426013",
-        "canal": "TNT Novelas",
-        "categoria": "Filmes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEgMl-EkP86bDSn6snwuXSXNWqNnaKmycLMvA4dl1gL3uH1oT-o9DkEqKhoQVk3nxdSHrZsgSwj_Xa_n1i8dtbMv4x89NFBjTjNyS9Me5l01Z6M9dq4-7nMfX-NggyjJ2dm29eZM8QW4oMkKllg1wZa9PR1Pacqgciw6oAiYJJCiPTMLnuLMb2sJ14W8dhWg\/s960\/1000284718.png",
-        "player": "https:\/\/cdn-3.nxplay.com.br\/TNT_NOVELAS\/index.m3u8",
-        "player2": "https:\/\/origin-fast.b-cdn.net\/TNT_NOVELAS\/index.m3u8"
-    },
-    {
-        "id": "425993",
-        "canal": "TNT Séries",
-        "categoria": "Filmes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEgMl-EkP86bDSn6snwuXSXNWqNnaKmycLMvA4dl1gL3uH1oT-o9DkEqKhoQVk3nxdSHrZsgSwj_Xa_n1i8dtbMv4x89NFBjTjNyS9Me5l01Z6M9dq4-7nMfX-NggyjJ2dm29eZM8QW4oMkKllg1wZa9PR1Pacqgciw6oAiYJJCiPTMLnuLMb2sJ14W8dhWg\/s960\/1000284718.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/TNT_SERIES_TK\/index.m3u8",
-        "player2": "https:\/\/cdn-5.nxplay.com.br\/TNT_SERIES_TK\/index.m3u8"
-    },
+	
 {
         "id": "426084",
         "canal": "TNT",
@@ -608,22 +392,8 @@ transition: background 0.2s;
         "player": "https:\/\/cdn-3.nxplay.com.br\/HISTORY_TK\/index.m3u8",
         "player2": "https:\/\/cdn-3.nxplay.com.br\/HISTORY_TK\/index.m3u8"
     },
-    {
-        "id": "45899433",
-        "canal": "Sony Channel",
-        "categoria": "Filmes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEhJh0KUy260lvGMu86ENfHsIK8UrTheGeXxMxYRSogGz6Yln93Poi_xvmCzJOfVbXtntoyVmf28wraSyP-OgE7mEg1Ohnacgp2IdO_gjAtLH8MTSBJbXWOPV3KRmgFM-OKT44TbjImosAY8IkaERpL8HxECFbJIPykOm8ioiBBvofoi5GYF6H8qEn2n-frF\/s300\/1000123202.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/SONY_CHANNEL\/index.m3u8",
-        "player2": "https:\/\/cdn-3.nxplay.com.br\/SONY_CHANNEL\/index.m3u8"
-    },
-    {
-        "id": "19393383838",
-        "canal": "Filmes&Arts",
-        "categoria": "Filmes",
-        "capa": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/c\/c4\/FILMANDARTS.png\/250px-FILMANDARTS.png",
-        "player": "https:\/\/cdn-3.nxplay.com.br\/Film_Arts_Brasil\/index.m3u8",
-        "player2": "https:\/\/cdn-3.nxplay.com.br\/Film_Arts_Brasil\/index.m3u8"
-    },
+   
+   
     {
         "id": "426151",
         "canal": "PrimeBox",
@@ -648,24 +418,9 @@ transition: background 0.2s;
         "player": "https:\/\/cdn-3.nxplay.com.br\/HGTV_BR_NX\/index.m3u8",
         "player2": "https:\/\/origin-fast.b-cdn.net\/HGTV_BR_NX\/index.m3u8"
     },
-    {
-        "id": "523356",
-        "canal": "LifeTime",
-        "categoria": "Entretenimento",
-        "capa": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/9\/9c\/Logo_Lifetime_2020.svg\/1280px-Logo_Lifetime_2020.svg.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/LIFE_TIME_TK\/index.m3u8",
-        "player2": "https:\/\/cdn-3.nxplay.com.br\/LIFE_TIME_TK\/index.m3u8"
-    },
+   
     
-    {
-        "id": "523313",
-        "canal": "AXN",
-        "categoria": "Filmes",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEiyy021t3PkcvStW4JhcekFVex-JtJIWgaEF6K7C8VBLHXFpdOMwZQPckqzOtWqSr6lt37PNajhHXdYKDaUxsJautc-xz3SgKIgV9wKeDI3NT0D6MTN2tLWabuLkT7SLRFtYn9PenBGl_2Qbemx5-uQ-gLf8wtK3ocWNZXmdCkolxJeqpTCslq_a3onMtqw\/s500\/1000094509.png",
-        "player": "https:\/\/cdn-5.nxplay.com.br\/AXN_TK\/index.m3u8",
-        "player2": "https:\/\/1.cdn9embed.xyz\/axn\/index.m3u8"
-    },
-    
+   
     
     {
         "id": "523311",
@@ -691,31 +446,7 @@ transition: background 0.2s;
         "player": "https:\/\/cdn-3.nxplay.com.br\/ANIMAL_PLANET\/index.m3u8",
         "player2": "https:\/\/origin-fast.b-cdn.net\/ANIMAL_PLANET_NX\/tracks-v1a1\/mono.ts.m3u8"
     },
-    {
-        "id": "523325",
-        "canal": "Cartoon Network",
-        "categoria": "Infantil",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEhf_FM81eN3KbU5bU1pf-aXJBTl5M0mQoIqIs7P0YlJLftYUFIWbEb-2aapo5FBOjgpN9dTPZlH_bYhUK3nYSl38fMvaNK3o26OIZj1TKlNbvFkMD06O1kbGl79Lle4iP7_iiREE-RpDVOaF_F5CWoK8LUnviJEU3tCZx9GQetS7bLJj50XtYEHcLzATuWY\/s300\/1000094518.png",
-        "player": "https:\/\/cdn-3.nxplay.com.br\/CARTOON_NETWORK_TK\/index.m3u8",
-        "player2": "https:\/\/cdn4.skygo.mn\/live\/disk1\/Cartoon_Network\/HLSv3-FTA\/Cartoon_Network.m3u8"
-    },
-    
-    {
-        "id": "426194",
-        "canal": "Cartoonito",
-        "categoria": "Infantil ",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEiNTRL0uGr3nTkX6FnMt4egIuB98bwGb9g_ohrj0f-7a_6f0IYiqNDH8jc6n0cpNMkIJkvJv8WE-nmUYXBxvpuvtQZnSQA3Yt_rskXM5BRmnkoB-xDkjn2JAt6xqDGIt_ez0KebsdqKZ2hobK65GDjxKCnDzenGWEB-XWvN-H_oea2KgOUhPbytaIFW5L0n\/s300\/1000094517.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/CARTOONITO_TK\/index.m3u8",
-        "player2": "https:\/\/cdn-5.nxplay.com.br\/CARTOONITO_TK\/index.m3u8"
-    },
-    {
-        "id": "523318",
-        "canal": "Discovery Kids",
-        "categoria": "Infantil ",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEjYeHSqf6UH29mewEAbK0WZFUruDhXWjxlaQR4Bm-NVTffnVE94bMB6nHGXAyXIY4jrWzufjuLpWmG6LVYqT5k7p7rNDaznuQst4LtnKkZ0jO1lLAQuFYb9UM3QVQOi3gqhQRbzCct5I9u-hiEfzyQIkGufX9yhkqrXB5M8tlVKH1gf148ORZ_ciC1AvMhE\/s300\/1000094528.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/DISCOVERY_KIDS_NX\/index.m3u8",
-        "player2": "https:\/\/cdn-3.nxplay.com.br\/DISCOVERY_KIDS_NX\/index.m3u8"
-    },
+   
 {
         "id": "523292",
         "canal": "Discovery Theater",
@@ -772,14 +503,7 @@ transition: background 0.2s;
         "player": "https:\/\/cdn-3.nxplay.com.br\/DISCOVERY_HH_NX\/index.m3u8",
         "player2": "https:\/\/cdn-3.nxplay.com.br\/DISCOVERY_HH_NX\/index.m3u8"
     },
-    {
-        "id": "426142",
-        "canal": "Fashion TV",
-        "categoria": "Variados",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEhqV0fWieaF5ECF67JqfLNGmrRlmMrhebmKMLndXqfEN8Q60z-q9AaLSm6MjicAaHhJQpLoVrUYm7CKolIRvkeXSQDdVdpvFu4SPbgQoVgsESZ4_WkbgGL15hxNF7ZTTK8BjPsSCGfeIB266nFoRDdYxS4oFQ7nlTe9pSKx9VFJ0dV85WwJ3OCEAuS_o56D\/s320\/1000505029.png",
-        "player": "https:\/\/amg01546-amg01546c1-rakuten-gb-9592.playouts.now.amagi.tv\/ts-eu-w1-n2\/playlist\/amg01546-fashiontv-fashiontv-rakutengb\/playlist.m3u8",
-        "player2": "https:\/\/stream8.cinerama.uz\/1053\/tracks-v1a1\/mono.m3u8"
-    },
+   
     {
         "id": "426053",
         "canal": "FishTV",
@@ -788,23 +512,8 @@ transition: background 0.2s;
         "player": "https:\/\/origin-fast.b-cdn.net\/FISH_TV_NX_TK\/index.m3u8",
         "player2": "https:\/\/cdn-5.nxplay.com.br\/FISH_TV_NX_TK\/index.m3u8"
     },
-    {
-        "id": "426074",
-        "canal": "Food Network",
-        "categoria": "Variados",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEhfS4l9Q6b10-GwpYjcSI6hXsBEGOeXcHniB999ohhSV0KOVHrXhB_Y2MXCyNxOdLRydh9MlDfBeDHzPJ-XAlzC6BFMLiHcjwS47nX6gcUT3a7zppA6VZ-GIgt8y204A2MXUGYFnqSjK-oqyEFk-EJLEnIRSif5qjxFZF_hQlo6AI1Lepk5xPrqep3FvCkZ\/s500\/1000095825.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/FOOD_NETWORK_NX\/index.m3u8",
-        "player2": "https:\/\/dk3okdd5036kz.cloudfront.net\/v1\/master\/3722c60a815c199d9c0ef36c5b73da68a62b09d1\/cc-o4pw0nc02sthz\/Foodnetwork_IT.m3u8"
-    },
-    
-    {
-        "id": "426137",
-        "canal": "TLC",
-        "categoria": "Variados",
-        "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEgdN07O0AccFdQ3olbu3T2NuO5EO5WFn21ZiWVTHt6qWsRJgSEyCLrcGaT2rrhlIFzbwxdkN1IWWyYApmHJt8PgwAIyOQ_FwxtF2DazREFKrYR-5HQGQAx8a5DCWZAM9xJ0AuvaqDrZ0qkr8hYPoJnFipCqCOniWIedDrH-Jf5_2UFoSQwLPB4Kr5Bg3cen\/s500\/1000095901.png",
-        "player": "https:\/\/origin-fast.b-cdn.net\/TLC\/index.m3u8",
-        "player2": "https:\/\/cdn-3.nxplay.com.br\/TLC\/index.m3u8"
-    },
+   
+  
 	{
         "id": "523314",
         "canal": "Band News",
@@ -855,14 +564,7 @@ transition: background 0.2s;
         "player": "https:\/\/amg00627-amg00627c9-runtime-latam-2613.playouts.now.amagi.tv\/ts-us-w2-n1\/playlist\/amg00627-banijayfast-masterchefbrazil-runtimelatam\/playlist.m3u8",
         "player2": "https:\/\/amg00627-amg00627c9-runtime-latam-2613.playouts.now.amagi.tv\/ts-us-w2-n1\/playlist\/amg00627-banijayfast-masterchefbrazil-runtimelatam\/playlist.m3u8"
     },
-    {
-        "id": "426075",
-        "canal": "PlayTv",
-        "categoria": "Abertos",
-        "capa": "https:\/\/static.wikia.nocookie.net\/logofic\/images\/f\/f9\/Playtv.png\/revision\/latest\/scale-to-width-down\/732?cb=20200518115119&path-prefix=pt-br",
-        "player": "https:\/\/isaocorp.cloudecast.com\/playtv\/index.m3u8",
-        "player2": "https:\/\/isaocorp.cloudecast.com\/playtv\/playlist.m3u8"
-    }, 
+   
     {
         "id": "426048",
         "canal": "TV Brasil",
@@ -911,7 +613,7 @@ transition: background 0.2s;
         "categoria": "Abertos",
         "capa": "https:\/\/blogger.googleusercontent.com\/img\/b\/R29vZ2xl\/AVvXsEiMjVCySLYwa21aHhutZXDskMTfTB5awjhL0ugojnV_OmvOoCPXRKaIAzS38jRSOFibRmHfHOsCp4KzZ8a_O_LKnQzQLNzsr82G3FECd3PZkwt26EctAtB2HDHDjhdbSO5sDyyjD_tUp0LQPIK6c60JYveQQt0I2XTxQlUOw2CK9ZQtehhNz-5fyFfgKqdK\/s200\/1000094496.png",
         "player": "https:\/\/tvbrasilinternacional-stream.ebc.com.br\/index.m3u8",
-        "player2": "https:\/\/tvbrasil-stream.ebc.com.https:\/\/tvbrasilinternacional-stream.ebc.com.br\/index.m3u8"
+        "player2": "https:\/\/tvbrasilinternacional-stream.ebc.com.br\/index.m3u8"
     },
     {
         "id": "417589",
@@ -1012,70 +714,7 @@ transition: background 0.2s;
         "player2": "https:\/\/tvnow.best\/api\/stream\/Ocotlan0317@gmail.com\/Chino1976!\/livetv.epg\/hbo.plus.br.m3u8"
     },
 	
-    {
-        "id": "67858",
-        "canal": "Babes",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/cdn4.skygo.mn\/live\/disk1\/Babes\/HLSv3-FTA\/Babes.m3u8",
-        "player2": "https:\/\/cdn4.skygo.mn\/live\/disk1\/Babes\/HLSv3-FTA\/Babes.m3u8"
-    },
-    {
-        "id": "7565745",
-        "canal": "Latina",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/latina.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/latina.m3u8"
-    },
-    {
-        "id": "768565",
-        "canal": "Compilation",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/compilation.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/compilation.m3u8"
-    },
-    {
-        "id": "67767676",
-        "canal": "Live Cams",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/livecams.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/livecams.m3u8"
-    },
-    {
-        "id": "6775665",
-        "canal": "MILF",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/milf.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/milf.m3u8"
-    },
-    {
-        "id": "5656755",
-        "canal": "Big Dick",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/bigdick.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/bigdick.m3u8"
-    },
-    {
-        "id": "87656567",
-        "canal": "Fetich",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/fetish.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/fetish.m3u8"
-    },
-    {
-        "id": "7766554456",
-        "canal": "BlowJob",
-        "categoria": "Adultos",
-        "capa": "https:\/\/png.pngtree.com\/png-vector\/20240209\/ourmid\/pngtree-18-icons-vector-png-image_11731868.png",
-        "player": "https:\/\/live.adultiptv.net\/blowjob.m3u8",
-        "player2": "https:\/\/live.adultiptv.net\/blowjob.m3u8"
-    }
+  
     ];
 
     var playerAtivo = null, canalFocado = null, timerAviso = null, timerControles = null;
@@ -1106,11 +745,6 @@ transition: background 0.2s;
             var el = document.getElementById('item-' + canalFocado.id);
             if(el) el.classList.add('ativo');
         }
-    }
-
-    function fecharGuiaInicial() {
-        var modal = document.getElementById('modalGuia');
-        if(modal) modal.classList.add('esconder');
     }
 
     function toggleMenu() {
@@ -1306,11 +940,6 @@ transition: background 0.2s;
         }
     }, false);
 })();
-</script>
-<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/654365252-widgets.js"></script>
-<script type='text/javascript'>
-window['__wavt'] = 'AAVkm1sB1qZyghqOnrNIvf8cHVZd:1779109876160';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d1569979418074310188','//www.tvonlinehd.com.br/','1569979418074310188');
-_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '1569979418074310188', 'title': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'url': 'https://www.tvonlinehd.com.br/', 'canonicalUrl': 'http://www.tvonlinehd.com.br/', 'homepageUrl': 'https://www.tvonlinehd.com.br/', 'searchUrl': 'https://www.tvonlinehd.com.br/search', 'canonicalHomepageUrl': 'http://www.tvonlinehd.com.br/', 'blogspotFaviconUrl': 'https://www.tvonlinehd.com.br/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': true, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'pt-BR', 'localeUnderscoreDelimited': 'pt_br', 'languageDirection': 'ltr', 'isPrivate': true, 'isMobile': false, 'isMobileRequest': true, 'mobileClass': '', 'isPrivateBlog': false, 'isDynamicViewsAvailable': true, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - Atom\x22 href\x3d\x22https://www.tvonlinehd.com.br/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - RSS\x22 href\x3d\x22https://www.tvonlinehd.com.br/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/1569979418074310188/posts/default\x22 /\x3e\n', 'meTag': '\x3clink rel\x3d\x22me\x22 href\x3d\x22https://www.blogger.com/profile/04607478149352051014\x22 /\x3e\n', 'adsenseClientId': 'ca-pub-8945315889145498', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': true, 'adsenseAutoAds': true, 'boqCommentIframeForm': true, 'loginRedirectParam': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/66f339c43d4ec606', 'plusOneApiSrc': 'https://apis.google.com/js/platform.js', 'disableGComments': true, 'interstitialAccepted': false, 'sharing': {'platforms': [{'name': 'Gerar link', 'key': 'link', 'shareMessage': 'Gerar link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartilhar no Facebook', 'target': 'facebook'}, {'name': 'Postar no blog!', 'key': 'blogThis', 'shareMessage': 'Postar no blog!', 'target': 'blog'}, {'name': 'X', 'key': 'twitter', 'shareMessage': 'Compartilhar no X', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartilhar no Pinterest', 'target': 'pinterest'}, {'name': 'E-mail', 'key': 'email', 'shareMessage': 'E-mail', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 0, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27pt_BR\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': true, 'jumpLinkMessage': 'ABRI CANAL \xbb', 'pageType': 'index', 'pageName': '', 'pageTitle': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'metaDescription': 'Tv Online \nTv Online - Assistir Tv ao Vivo Gratis! Transmiss\xe3o de seus programas favoritos em alta qualidade, sem custos adicionais.\ntv online gratis'}}, {'name': 'features', 'data': {}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'Link copiado para a \xe1rea de transfer\xeancia.', 'ok': 'Ok', 'postLink': 'Link da postagem'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizar', 'isResponsive': true, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'description': 'Tv Online \nTv Online - Assistir Tv ao Vivo Gratis! Transmiss\xe3o de seus programas favoritos em alta qualidade, sem custos adicionais.\ntv online gratis', 'url': 'https://www.tvonlinehd.com.br/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
 </script>
 </body>
 </html>
