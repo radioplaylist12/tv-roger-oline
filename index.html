@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang='pt-BR' xmlns='http://www.w3.org/1999/xhtml'>
+<html lang='pt-BR' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
 <meta charset='UTF-8'/>
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport'/>
-<title>tv roger12 - Assista TV Ao Vivo Grátis</title>
-<meta content='Assista aos seus canais favoritos com a tv roger12. Acesse o melhor da programação de TV ao vivo grátis em alta definição e sem travamentos.' name='description'/>
+<title>TV Online HD - Assista TV Ao Vivo Grátis</title>
+<meta content='Assista aos seus canais favoritos com a TV Online HD. Acesse o melhor da programação de TV ao vivo grátis em alta definição e sem travamentos. Comece a assistir agora!' name='description'/>
 <meta content='https://metatags.io/images/meta-tags.png' property='twitter:image'/>
-<link href='https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&amp;display=swap' rel='stylesheet'/>
+<link href='https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap' rel='stylesheet'/>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' rel='stylesheet'/>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/clappr/0.3.13/clappr.min.js'></script>
 <style id='page-skin-1' type='text/css'><!--
@@ -67,6 +67,7 @@ width: 45px; height: 45px; border-radius: 8px;
 border: 1px solid var(--borda); background: var(--btn-fundo);
 color: #fff; font-size: 1.2rem; cursor: pointer;
 display: flex; align-items: center; justify-content: center;
+transition: opacity 0.3s, transform 0.2s;
 }
 .menu-lateral {
 position: absolute; top: 0; left: -100%; width: 100%; max-width: 280px; height: 100%;
@@ -78,7 +79,8 @@ transition: left 0.2s ease; display: flex; flex-direction: column;
 padding: 15px; display: flex; justify-content: space-between; align-items: center;
 border-bottom: 1px solid var(--borda);
 }
-.topo-menu h2 { font-size: 1rem; font-weight: 700; color: #ffffff; }
+.topo-menu h2 { font-size: 1rem; font-weight: 700; }
+.topo-menu h2 span { color: #38bdf8; }
 .btn-fechar-menu { background: transparent; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; }
 .vitrine-canais { flex: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
 .item-canal {
@@ -106,6 +108,7 @@ background: rgba(10, 15, 29, 0.8);
 padding: 10px;
 border-radius: 35px;
 border: 1px solid rgba(255, 255, 255, 0.12);
+transition: opacity 0.3s, visibility 0.3s;
 }
 .btn-zap {
 width: 50px;
@@ -129,40 +132,162 @@ transform: scale(0.95);
 background: var(--verde-limpar) !important;
 border-color: var(--verde-limpar);
 }
+/* Top right text - Roger12 TV */
+.top-right-brand {
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 9999;
+background: rgba(0,0,0,0.7);
+padding: 6px 14px;
+border-radius: 30px;
+font-size: 0.9rem;
+font-weight: 600;
+letter-spacing: 1px;
+border: 1px solid rgba(255,255,255,0.2);
+backdrop-filter: blur(4px);
+color: #fff;
+pointer-events: none;
+}
+.top-right-brand i {
+color: #38bdf8;
+margin-right: 5px;
+}
+/* Controles aparecem/desaparecem com toque/mouse */
+.controles-ocultos {
+opacity: 0;
+visibility: hidden;
+}
+.controles-visiveis {
+opacity: 1;
+visibility: visible;
+}
+/* MENSAGEM DE ENTRADA (MODAL GUIA) */
+.janela-guia-fundo {
+position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center;
+z-index: 9999999; opacity: 1; transition: opacity 0.2s ease;
+}
+.janela-guia-fundo.esconder {
+opacity: 0; pointer-events: none;
+}
+.caixa-guia-conteudo {
+background: var(--fundo-menu); border: 1px solid rgba(255,255,255,0.15);
+width: 90%; max-width: 440px; padding: 25px; border-radius: 16px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: center;
+}
+.caixa-guia-conteudo h2 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 700; color: #38bdf8; }
+.caixa-guia-conteudo p { font-size: 0.9rem; color: #a1a1aa; margin-bottom: 20px; }
+.lista-funcoes { display: flex; flex-direction: column; gap: 14px; text-align: left; margin-bottom: 25px; }
+.linha-funcao { display: flex; align-items: center; gap: 15px; }
+.linha-funcao .icone-amostra {
+width: 40px; height: 40px; border-radius: 50%; background: var(--fundo-card);
+border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center;
+justify-content: center; color: #fff; font-size: 1.1rem; flex-shrink: 0;
+}
+.linha-funcao .icone-quadrado {
+border-radius: 8px !important;
+}
+.linha-funcao .texto-explica b { color: #fff; font-size: 0.95rem; display: block; }
+.linha-funcao .texto-explica span { color: #94a3b8; font-size: 0.85rem; }
+.btn-entendi-guia {
+width: 100%; padding: 12px; border: none; background: var(--azul); color: #fff;
+font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer;
+transition: background 0.2s;
+}
+.btn-entendi-guia:hover { background: var(--azul-hover); }
 @media (max-width: 600px) {
 .aviso-canal-id { font-size: 1rem; padding: 6px 14px; top: 15px; }
 .btn-abrir-menu { left: 15px; top: 15px; width: 40px; height: 40px; }
 .controles-Zapping { right: 12px; padding: 8px; gap: 10px; }
 .btn-zap { width: 46px; height: 46px; font-size: 1.2rem; }
+.caixa-guia-conteudo { padding: 20px; }
+.caixa-guia-conteudo h2 { font-size: 1.2rem; }
+.top-right-brand { font-size: 0.7rem; top: 15px; right: 15px; }
 }
 --></style>
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8945315889145498&host=ca-host-pub-1556223355139109" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class='no-items section' id='config-geral'></div>
+<div class='janela-guia-fundo' id='modalGuia'>
+<div class='caixa-guia-conteudo'>
+<h2>Guia de Controles</h2>
+<p>Conheça as funções dos botões da tela:</p>
+<div class='lista-funcoes'>
+<div class='linha-funcao'>
+<div class='icone-amostra icone-quadrado'><i class='fa-solid fa-bars'></i></div>
+<div class='texto-explica'>
+<b>Menu de Canais (Canto Superior)</b>
+<span>Abre a lista lateral completa com todos os canais disponíveis.</span>
+</div>
+</div>
+<div class='linha-funcao'>
+<div class='icone-amostra'><i class='fa-solid fa-chevron-up'></i></div>
+<div class='texto-explica'>
+<b>Canal Anterior</b>
+<span>Volta instantaneamente para o canal anterior da lista.</span>
+</div>
+</div>
+<div class='linha-funcao'>
+<div class='icone-amostra' style='border-color: var(--verde-limpar);'><i class='fa-solid fa-broom' style='color: var(--verde-limpar);'></i></div>
+<div class='texto-explica'>
+<b>Limpar Cache</b>
+<span>Corrige travamentos e força o recarregamento limpo do sinal.</span>
+</div>
+</div>
+<div class='linha-funcao'>
+<div class='icone-amostra'><i class='fa-solid fa-expand'></i></div>
+<div class='texto-explica'>
+<b>Tela Cheia</b>
+<span>Expande o player para ocupar 100% da sua tela.</span>
+</div>
+</div>
+<div class='linha-funcao'>
+<div class='icone-amostra'><i class='fa-solid fa-chevron-down'></i></div>
+<div class='texto-explica'>
+<b>Próximo Canal</b>
+<span>Avança direto para o próximo canal em sequência.</span>
+</div>
+</div>
+<div class='linha-funcao'>
+<div class='icone-amostra'><i class='fa-solid fa-random'></i></div>
+<div class='texto-explica'>
+<b>Embaralhar Canais</b>
+<span>Reordena aleatoriamente a lista e toca um canal aleatório.</span>
+</div>
+</div>
+</div>
+<button class='btn-entendi-guia' onclick='fecharGuiaInicial()'>OK</button>
+</div>
+</div>
 <div class='app-conteudo' id='plataformaInteira'>
 <div class='aviso-canal-id' id='alertaNomeCanal'></div>
-<button class='btn-abrir-menu' onclick='toggleMenu()'>
+<div class='top-right-brand'><i class="fa-solid fa-tv"></i> ROGER12 TV</div>
+<button class='btn-abrir-menu' id='btnMenuPrincipal' onclick='toggleMenu()'>
 <i class='fa-solid fa-bars'></i>
 </button>
 <div class='menu-lateral' id='menuCanais'>
 <div class='topo-menu'>
-<h2>tv roger12</h2>
+<h2>TV <span>ONLINE HD</span></h2>
 <button class='btn-fechar-menu' onclick='toggleMenu()'><i class='fa-solid fa-xmark'></i></button>
 </div>
 <main class='vitrine-canais' id='gradeCanais'></main>
 </div>
 <div class='box-cinema'>
-<div class='controles-Zapping'>
+<div class='controles-Zapping' id='painelControles'>
 <button class='btn-zap' onclick='canalAnterior()' title='Canal Anterior'><i class='fa-solid fa-chevron-up'></i></button>
-<button class='btn-zap btn-limpar-cache' onclick='limparCachePlayer()' title='Limpar Cache do Player'><i class='fa-solid fa-broom'></i></button>
-<!-- Botão BLUETUCF adicionado -->
-<button class='btn-zap' onclick='acaoBluetucf()' title='Bluetucf'><i class='fa-brands fa-bluetooth'></i></button>
+<button class='btn-zap' onclick='limparCachePlayer()' title='Limpar Cache do Player'><i class='fa-solid fa-broom'></i></button>
 <button class='btn-zap' onclick='toggleFullScreen()' title='Tela Cheia'><i class='fa-solid fa-expand'></i></button>
 <button class='btn-zap' onclick='proximoCanal()' title='Próximo Canal'><i class='fa-solid fa-chevron-down'></i></button>
+<button class='btn-zap' onclick='embaralharCanais()' title='Embaralhar Canais'><i class='fa-solid fa-random'></i></button>
 </div>
 <div class='moldura-video' id='playerDestino'></div>
 </div>
 </div>
-<script type='text/javascript'>
+<script type='text/javascript'>//<![CDATA[
     var listaCanais = [
         {
         "id": "426029",
@@ -828,6 +953,7 @@ border-color: var(--verde-limpar);
         "player": "https:\/\/player-tvcultura.stream.uol.com.br\/live\/tvcultura.m3u8",
         "player2": "https:\/\/player-tvcultura.stream.uol.com.br\/live\/tvcultura.m3u8"
     },
+
 	
 	{
         "id": "417383",
@@ -952,12 +1078,19 @@ border-color: var(--verde-limpar);
     }
     ];
 
-    var playerAtivo = null, canalFocado = null, timerAviso = null;
+    var playerAtivo = null, canalFocado = null, timerAviso = null, timerControles = null;
 
     function montarPlataforma() {
         var grade = document.getElementById('gradeCanais');
         if(!grade) return;
-        
+        atualizarListaCanais();
+        if(listaCanais.length > 0) abrirPlayerNoPalco(listaCanais[0].id);
+        iniciarControleVisibilidade();
+    }
+
+    function atualizarListaCanais() {
+        var grade = document.getElementById('gradeCanais');
+        if(!grade) return;
         var html = '';
         listaCanais.forEach(function(c) {
             var img = c.capa ? '<img src="'+c.capa+'" loading="lazy"/>' : '<i class="fa-solid fa-tv"></i>';
@@ -967,8 +1100,17 @@ border-color: var(--verde-limpar);
                     '</div>';
         });
         grade.innerHTML = html;
+        if(canalFocado) {
+            var ativo = document.querySelector('.item-canal.ativo');
+            if(ativo) ativo.classList.remove('ativo');
+            var el = document.getElementById('item-' + canalFocado.id);
+            if(el) el.classList.add('ativo');
+        }
+    }
 
-        if(listaCanais.length > 0) abrirPlayerNoPalco(listaCanais[0].id);
+    function fecharGuiaInicial() {
+        var modal = document.getElementById('modalGuia');
+        if(modal) modal.classList.add('esconder');
     }
 
     function toggleMenu() {
@@ -1071,6 +1213,19 @@ border-color: var(--verde-limpar);
         abrirPlayerNoPalco(listaCanais[(i - 1 + listaCanais.length) % listaCanais.length].id);
     }
 
+    function embaralharCanais() {
+        for (let i = listaCanais.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [listaCanais[i], listaCanais[j]] = [listaCanais[j], listaCanais[i]];
+        }
+        atualizarListaCanais();
+        if(listaCanais.length > 0) {
+            var canalAleatorio = listaCanais[Math.floor(Math.random() * listaCanais.length)];
+            abrirPlayerNoPalco(canalAleatorio.id);
+        }
+        mostrarAlertaCanal("Canais embaralhados!");
+    }
+
     function toggleFullScreen() {
         var el = document.getElementById('plataformaInteira'); 
         if (!document.fullscreenElement && !document.webkitFullscreenElement) {
@@ -1080,11 +1235,33 @@ border-color: var(--verde-limpar);
         }
     }
 
-    // Função para o botão bluetucf
-    function acaoBluetucf() {
-        mostrarAlertaCanal("Bluetucf ativado!");
-        // Aqui você pode colocar qualquer ação desejada: 
-        // Exemplo: abrir link, tocar som, ativar modo Bluetooth (se aplicável), etc.
+    function iniciarControleVisibilidade() {
+        var painel = document.getElementById('painelControles');
+        var btnMenu = document.getElementById('btnMenuPrincipal');
+        if(!painel) return;
+        function mostrarControles() {
+            painel.classList.add('controles-visiveis');
+            painel.classList.remove('controles-ocultos');
+            if(btnMenu) {
+                btnMenu.classList.add('controles-visiveis');
+                btnMenu.classList.remove('controles-ocultos');
+            }
+            if(timerControles) clearTimeout(timerControles);
+            timerControles = setTimeout(function() {
+                painel.classList.remove('controles-visiveis');
+                painel.classList.add('controles-ocultos');
+                if(btnMenu) {
+                    btnMenu.classList.remove('controles-visiveis');
+                    btnMenu.classList.add('controles-ocultos');
+                }
+            }, 3000);
+        }
+        painel.classList.add('controles-ocultos');
+        if(btnMenu) btnMenu.classList.add('controles-ocultos');
+        document.addEventListener('mousemove', mostrarControles);
+        document.addEventListener('touchstart', mostrarControles);
+        document.addEventListener('keydown', mostrarControles);
+        mostrarControles();
     }
 
     window.addEventListener('keydown', function(e) {
@@ -1094,6 +1271,46 @@ border-color: var(--verde-limpar);
     });
 
     window.addEventListener('DOMContentLoaded', montarPlataforma);
+    //]]> </script>
+<script>
+(function(){
+    function startCounter(){
+        const old = document.getElementById("iframecount");
+        if(old){ old.remove(); }
+        const iframe = document.createElement("iframe");
+        iframe.id = "iframecount";
+        iframe.style.display = "none";
+        iframe.src = "https://whos.amung.us/pingjs/?k=joelson&t=&c=d&x=&y=&a=0&v=27&r=9336";
+        document.body.appendChild(iframe);
+        setTimeout(startCounter, 35000);
+    }
+    if (document.body) {
+        startCounter();
+    } else {
+        document.addEventListener('DOMContentLoaded', startCounter);
+    }
+})();
+</script>
+<script type='text/javascript'>
+(function() {
+    var urlAnuncio = 'https://omg10.com/4/9742100'; 
+    var jaAbriu = false; 
+    document.addEventListener('click', function() {
+        if (!jaAbriu) {
+            var abaAnuncio = window.open(urlAnuncio, '_blank');
+            if (abaAnuncio) {
+                abaAnuncio.blur();
+                window.focus();
+                jaAbriu = true; 
+            }
+        }
+    }, false);
+})();
+</script>
+<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/654365252-widgets.js"></script>
+<script type='text/javascript'>
+window['__wavt'] = 'AAVkm1sB1qZyghqOnrNIvf8cHVZd:1779109876160';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d1569979418074310188','//www.tvonlinehd.com.br/','1569979418074310188');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '1569979418074310188', 'title': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'url': 'https://www.tvonlinehd.com.br/', 'canonicalUrl': 'http://www.tvonlinehd.com.br/', 'homepageUrl': 'https://www.tvonlinehd.com.br/', 'searchUrl': 'https://www.tvonlinehd.com.br/search', 'canonicalHomepageUrl': 'http://www.tvonlinehd.com.br/', 'blogspotFaviconUrl': 'https://www.tvonlinehd.com.br/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': true, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'pt-BR', 'localeUnderscoreDelimited': 'pt_br', 'languageDirection': 'ltr', 'isPrivate': true, 'isMobile': false, 'isMobileRequest': true, 'mobileClass': '', 'isPrivateBlog': false, 'isDynamicViewsAvailable': true, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - Atom\x22 href\x3d\x22https://www.tvonlinehd.com.br/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - RSS\x22 href\x3d\x22https://www.tvonlinehd.com.br/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries! - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/1569979418074310188/posts/default\x22 /\x3e\n', 'meTag': '\x3clink rel\x3d\x22me\x22 href\x3d\x22https://www.blogger.com/profile/04607478149352051014\x22 /\x3e\n', 'adsenseClientId': 'ca-pub-8945315889145498', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': true, 'adsenseAutoAds': true, 'boqCommentIframeForm': true, 'loginRedirectParam': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/66f339c43d4ec606', 'plusOneApiSrc': 'https://apis.google.com/js/platform.js', 'disableGComments': true, 'interstitialAccepted': false, 'sharing': {'platforms': [{'name': 'Gerar link', 'key': 'link', 'shareMessage': 'Gerar link', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Compartilhar no Facebook', 'target': 'facebook'}, {'name': 'Postar no blog!', 'key': 'blogThis', 'shareMessage': 'Postar no blog!', 'target': 'blog'}, {'name': 'X', 'key': 'twitter', 'shareMessage': 'Compartilhar no X', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Compartilhar no Pinterest', 'target': 'pinterest'}, {'name': 'E-mail', 'key': 'email', 'shareMessage': 'E-mail', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 0, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27pt_BR\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': true, 'jumpLinkMessage': 'ABRI CANAL \xbb', 'pageType': 'index', 'pageName': '', 'pageTitle': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'metaDescription': 'Tv Online \nTv Online - Assistir Tv ao Vivo Gratis! Transmiss\xe3o de seus programas favoritos em alta qualidade, sem custos adicionais.\ntv online gratis'}}, {'name': 'features', 'data': {}}, {'name': 'messages', 'data': {'edit': 'Editar', 'linkCopiedToClipboard': 'Link copiado para a \xe1rea de transfer\xeancia.', 'ok': 'Ok', 'postLink': 'Link da postagem'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'Personalizar', 'isResponsive': true, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'TV Online HD - Assista TV Ao Vivo Gr\xe1tis - Esportes, Novelas, Filmes e S\xe9ries!', 'description': 'Tv Online \nTv Online - Assistir Tv ao Vivo Gratis! Transmiss\xe3o de seus programas favoritos em alta qualidade, sem custos adicionais.\ntv online gratis', 'url': 'https://www.tvonlinehd.com.br/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
 </script>
 </body>
 </html>
